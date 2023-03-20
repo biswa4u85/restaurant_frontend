@@ -5,11 +5,12 @@ import { loginApi } from "../services/frappe-apis";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import config from "../common/config";
 
 export function Login() {
     let navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { users, setUsers } = useContext(AuthModeContext);
+    const { restaurant, setUsers } = useContext(AuthModeContext);
     let data = {
         username: "1234567890",
         password: "admin@123"
@@ -17,7 +18,6 @@ export function Login() {
     const onSubmit = async (data1) => {
         let user = await loginApi(`de_restaurant_backend.api.v_0_1.login.login`, data)
         if (user.status == 'error') {
-            console.log(user.error)
             toast.error(JSON.stringify(user.error))
         } else {
             toast.success(user.message)
@@ -25,28 +25,18 @@ export function Login() {
             navigate('/home')
         }
     };
+
+
     return (
         <>
             <section>
                 <div className="detail_slider mb-0">
-                    <NavLink to="/home">
-                        <div className=" detail_item">
-                            <img src="http://restaurant.develop.helloapps.io/files/logo-img.png" className="logo-over" alt="logo" />
-                            <img src="http://restaurant.develop.helloapps.io/files/Rectangle food1.png" className="img-fluid w-100" />
+                    {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <NavLink key={key} to="/">
+                        <div className="detail_item">
+                            <img src={config.imageURL + item.image} className="logo-over" alt="logo" />
+                            {/* <img src={config.imageURL + item.image} className="img-fluid w-100" /> */}
                         </div>
-                    </NavLink>
-                    <NavLink to="/home">
-                        <div className=" detail_item">
-                            <img src="http://restaurant.develop.helloapps.io/files/logo-img.png" className="logo-over" alt="logo" />
-                            <img src="http://restaurant.develop.helloapps.io/files/Rectangle food2.png" className="img-fluid w-100" />
-                        </div>
-                    </NavLink>
-                    <NavLink to="/home">
-                        <div className=" detail_item">
-                            <img src="http://restaurant.develop.helloapps.io/files/logo-img.png" className="logo-over" alt="logo" />
-                            <img src="http://restaurant.develop.helloapps.io/files/Rectangle food3.png" className="img-fluid w-100" />
-                        </div>
-                    </NavLink>
+                    </NavLink>))}
                 </div>
             </section>
 

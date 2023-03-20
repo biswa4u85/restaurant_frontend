@@ -6,18 +6,16 @@ import { NavLink } from "react-router-dom";
 import config from "../common/config";
 
 export function Home() {
-    const { table, deliveryType, users, group, setGroup, } = useContext(AuthModeContext);
+    const { table, deliveryType, users, group, setGroup, restaurant } = useContext(AuthModeContext);
     let navigate = useNavigate();
-    console.log(users)
 
     useEffect(() => {
         getData()
     }, [])
 
     const getData = async () => {
-        let groups = await apiGetCall(`de_restaurant_backend.api.v_0_1.menu.get_item_group`, {})
+        let groups = await apiGetCall(`de_restaurant_backend.api.v_0_1.menu.get_item_group`, { token: `Basic ${users.auth_key}` })
         if (groups.status != 'error') {
-            console.log(groups?.groups)
             setGroup(groups?.groups)
         }
     };
@@ -68,25 +66,14 @@ export function Home() {
             </div>
 
             <section className="featured py-3 pl-3 bg-white body_rounded ">
-                <div className="featured_slider">
-                    <NavLink to="/home">
-                        <div className="featured_item">
-                            <img src="http://restaurant.develop.helloapps.io/files/EAT, LOVE, REPEAT.png" className="logo-over" alt="logo" />
-                            <img src="http://restaurant.develop.helloapps.io/files/Rectangle 5.png" className="img-fluid box_rounded w-100" />
-                        </div>
-                    </NavLink>
-                    <NavLink to="/home">
-                        <div className="featured_item ">
-                            <img src="http://restaurant.develop.helloapps.io/files/EAT, LOVE, REPEAT.png" className="logo-over" alt="logo" />
-                            <img src="http://restaurant.develop.helloapps.io/files/Rectangle food7.png" className="img-fluid box_rounded w-100" />
-                        </div>
-                    </NavLink>
-                    <NavLink to="/home">
-                        <div className="featured_item ">
-                            <img src="http://restaurant.develop.helloapps.io/files/EAT, LOVE, REPEAT.png" className="logo-over" alt="logo" />
-                            <img src="http://restaurant.develop.helloapps.io/files/Rectangle food7.png" className="img-fluid box_rounded w-100" />
-                        </div>
-                    </NavLink>
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="featured_slider carousel-inner">
+                        {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <NavLink class={"carousel-item " + (key == 0 ? "active" : "")} key={key} to="/">
+                            <div className="detail_item">
+                                <img style={{ width: '100%' }} src={config.imageURL + item.image} className="logo-over" alt="logo" />
+                            </div>
+                        </NavLink>))}
+                    </div>
                 </div>
             </section>
             <div className="px-3">

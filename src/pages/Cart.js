@@ -6,7 +6,7 @@ import { apiGetCall } from "../services/frappe-apis";
 
 export function Cart() {
     let navigate = useNavigate();
-    const { users, setUsers } = useContext(AuthModeContext);
+    const { users, setUsers, cart, setCart } = useContext(AuthModeContext);
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
@@ -21,11 +21,12 @@ export function Cart() {
         }
     };
 
-
     const placeOrder = () => {
         let element = document.getElementById('orderSummary')
         element.classList.remove('d-none')
     }
+
+    console.log(cart)
 
     return (
         <>
