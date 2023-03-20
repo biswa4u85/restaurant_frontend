@@ -1,0 +1,993 @@
+/*
+Template Name: Zomoto - Food Order Directory, Restaurants, Fast Food, Bars Mobile Template 
+Author: Askbootstrap
+Author URI: https://themeforest.net/user/askbootstrap
+Version: 1.0
+*/
+
+/*
+- Extra
+- Bootstrap Colors
+- Top rounded body content
+- Rounded cards box
+- Slick slider item outline
+- Back button
+- Dots slider
+- Checked sorting
+- Tabs links
+- Home2 cat_list
+- Asian
+- Cart 1
+- Quantaty input
+- Cart 2
+- Profile
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+}
+
+.bg-light {
+    background-color: #f0f2f6 !important;
+}
+
+.shadow-sm {
+    -webkit-box-shadow: 0 1px 2px rgb(0 0 0 / 20%) !important;
+    -moz-box-shadow: 0 1px 2px rgb(0 0 0 / 20%) !important;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%) !important;
+}
+
+.padding_bottom {
+    padding-bottom: 85px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn-sm {
+    font-size: 12px;
+}
+
+/* Extra */
+.osahan-list .overflow-hidden.box_rounded {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+}
+
+.form-control {
+    box-shadow: none !important;
+}
+
+.index_bg .slick-dots {
+    bottom: 70px;
+}
+
+.homepage-toggle-btn {
+    width: 43px;
+    height: 43px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 43px;
+    padding: 0px;
+}
+
+.homepage-toggle-btn svg {
+    height: 26px !important;
+    width: auto;
+}
+
+.cat_listicon2 {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.cat_listicon2:hover {
+    color: #fff;
+}
+
+label.btn.btn-outline-primary.text-primary.box_rounded.w-100.p-3 {
+    box-shadow: none !important;
+}
+
+.osahan-footer-nav .col {
+    padding: 0px;
+    height: 70px;
+    position: relative;
+}
+
+.osahan-footer-nav .col a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.osahan-footer-nav .col .mdi-circle-medium {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+}
+
+.osahan-footer-nav .col .text-warning {
+    color: #e72435 !important;
+}
+
+.featured_item .position-absolute {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+42,000000+42,000000+100&0+0,0.95+0,0+100 */
+    background: -moz-linear-gradient(45deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2000000', endColorstr='#00000000', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    height: 100%;
+    border-radius: 12px;
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px 19px !important;
+}
+
+.featured_item .position-absolute p {
+    margin: 0 0 6px 0px !important;
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.featured_item .position-absolute span {
+    font-size: 13px;
+    color: #ffffff !important;
+    background: #f74853;
+    padding: 2px 7px;
+    border-radius: 6px;
+}
+
+.featured_item {
+    position: relative;
+}
+
+.swip-trash {
+    font-size: 34px;
+}
+
+.swip-trash span {
+    margin: 16px;
+}
+
+.osahan-list .box_rounded img {
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    object-fit: cover;
+    max-width: 60px;
+}
+
+.gurdeep-osahan-inner-header {
+    z-index: 9;
+}
+
+.gurdeep-osahan-inner-header a {
+    display: flex;
+    align-items: center;
+
+}
+
+.height-70 {
+    height: 70px;
+}
+
+.verification-form .form-control {
+    font-size: 30px;
+    text-align: center;
+    /* padding: 0 0 0 15px; */
+    font-weight: 700;
+    margin: 0 7px;
+    /* border-bottom: 3px solid; */
+}
+
+.order_detail-2 .box_rounded img {
+    height: 29px;
+    min-width: 29px;
+    max-width: 29px;
+}
+
+/* Bootstrap Colors */
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background: rgb(0, 97, 242);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(0, 97, 242, 1) 0%, rgba(105, 0, 199, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(0, 97, 242, 1) 0%, rgba(105, 0, 199, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(0, 97, 242, 1) 0%, rgba(105, 0, 199, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061f2', endColorstr='#6900c7', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-primary,
+.bg-primary {
+    background: rgb(0, 97, 242);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(0, 97, 242, 1) 0%, rgba(105, 0, 199, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(0, 97, 242, 1) 0%, rgba(105, 0, 199, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(0, 97, 242, 1) 0%, rgba(105, 0, 199, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061f2', endColorstr='#6900c7', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-success,
+.bg-success {
+    background: rgb(6, 121, 79);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(6, 121, 79, 1) 0%, rgba(15, 162, 139, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(6, 121, 79, 1) 0%, rgba(15, 162, 139, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(6, 121, 79, 1) 0%, rgba(15, 162, 139, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#06794f', endColorstr='#0fa28b', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-danger,
+.bg-danger,
+.progress-bar {
+    background: rgb(245, 59, 87);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(245, 59, 87, 1) 0%, rgba(255, 121, 63, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(245, 59, 87, 1) 0%, rgba(255, 121, 63, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(245, 59, 87, 1) 0%, rgba(255, 121, 63, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f53b57', endColorstr='#ff793f', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.btn-warning,
+.bg-warning {
+    background: rgb(255, 193, 7);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(255, 193, 7, 1) 0%, rgba(255, 222, 7, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(255, 193, 7, 1) 0%, rgba(255, 222, 7, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(255, 193, 7, 1) 0%, rgba(255, 222, 7, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc107', endColorstr='#ffde07', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.btn-info,
+.bg-info {
+    background: rgb(13, 202, 240);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(13, 202, 240, 1) 0%, rgba(0, 119, 211, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(13, 202, 240, 1) 0%, rgba(0, 119, 211, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(13, 202, 240, 1) 0%, rgba(0, 119, 211, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0dcaf0', endColorstr='#0077d3', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.btn-dark,
+.bg-dark {
+    background: rgb(33, 37, 41);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(33, 37, 41, 1) 0%, rgba(80, 88, 96, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(33, 37, 41, 1) 0%, rgba(80, 88, 96, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(33, 37, 41, 1) 0%, rgba(80, 88, 96, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#212529', endColorstr='#505860', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+/* top rounded body content */
+.body_rounded {
+    border-radius: 15px 15px 0px 0px;
+}
+
+.bodybottom_rounded {
+    border-radius: 0px 0px 15px 15px;
+}
+
+/* rounded cards box */
+.box_rounded {
+    border-radius: 12px;
+}
+
+.box_rounded:focus {
+    outline: none !important;
+}
+
+/* slick slider item outline */
+a.slick-slide.slick-current.slick-active:focus {
+    outline: none;
+}
+
+.slick-list:focus {
+    outline: 0;
+}
+
+.featured_item:focus {
+    outline: none;
+}
+
+.featured_item span {
+    bottom: 0;
+}
+
+a.slick-slide {
+    outline: none;
+}
+
+/* back button */
+.btn-lg {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding: 12px 20px;
+}
+
+.btn_detail {
+
+    width: 40px;
+    color: #000;
+    font-size: 26px;
+    border-radius: .6rem !important;
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* dots slider */
+.slick-dots li {
+    width: 12px;
+}
+
+.slick-dots {
+    bottom: 0px;
+    text-align: center;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: .9;
+    color: #fff;
+}
+
+.slick-dots li button:before {
+    opacity: .5;
+    color: #dee2e6;
+}
+
+/* checked sorting */
+.btn-check:active+.bg-check,
+.btn-check:checked+.bg-check,
+.bg-check.active,
+.bg-check:active,
+.show>.bg-check.dropdown-toggle {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    opacity: 0.9;
+}
+
+.bg-check {
+    background-color: #000;
+    opacity: 0.4;
+    color: #fff;
+}
+
+/* tabs links */
+.nav-pills .detail_tab.active,
+.nav-pills .show>.detail_tab {
+    color: #106cf6 !important;
+    background: 0 0 !important;
+}
+
+.nav-pills a.active span.dot,
+.nav-pills .show>a span.dot {
+    background-color: #0d6efd;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.progress {
+    height: 6px;
+}
+
+.progress-bar {
+    background-color: #dc3545;
+}
+
+/* home2 cat_list */
+.cat_listicon {
+    font-size: 31px;
+    opacity: 0.3;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
+/* asian */
+.title_top {
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    margin: auto;
+}
+
+/* cart 1 */
+.cart_img {
+    width: 100px;
+}
+
+/* quantaty input */
+.qty_input {
+    width: 45%;
+}
+
+.add_btn {
+    width: 55%;
+}
+
+/* cart 2 */
+.qty_cart {
+    width: 100px;
+}
+
+.qty_cart .btn {
+    padding: 0px;
+    font-size: 15px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 20%) !important;
+}
+
+.qty_cart .btn:hover i {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+.qty_cart .form-control {
+    font-size: 13px;
+    padding: 0px;
+}
+
+/* profile */
+.profile_img {
+    width: 50px;
+}
+
+/* z-index minus */
+.z-index-n1 {
+    z-index: -9;
+}
+
+.btn-check:active+.btn-outline-primary,
+.btn-check:checked+.btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show,
+.btn-outline-primary:active {
+    color: #fff !important;
+}
+
+.btn-outline-primary:hover {
+    color: #fff !important;
+}
+
+.slick-slide {
+    outline: none;
+}
+
+.pay_item label {
+    font-size: 45px;
+}
+
+.btn-check:active+.btn-btncheck,
+.btn-check:checked+.btn-btncheck,
+.btn-btncheck.active,
+.btn-btncheck:active,
+.show>.btn-btncheck.dropdown-toggle {
+    color: #106cf6 !important;
+    background-color: #fff !important;
+    border-color: #f9fafb !important;
+    opacity: 1.0 !important;
+}
+
+.card-no {
+    font-size: 4px;
+}
+
+.btn-check:active+.btn-cardpay,
+.btn-check:checked+.btn-cardpay,
+.btn-cardpay.active,
+.btn-cardpay:active,
+.show>.btn-cardpay.dropdown-toggle {
+    color: #fff !important;
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+
+.osahan-banner .title_sign {
+    background: #000;
+    opacity: .7;
+}
+
+.btn-cardpay {
+    padding: 15px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: none !important;
+}
+
+.btn-cardpay .card-detials {
+    font-size: 12px;
+}
+
+.btn-cardpay p.small.mb-0.pt-5 {
+    font-weight: 900;
+}
+
+.btn-cardpay p.small.mb-1 {
+    font-size: 12px;
+}
+
+.btn-cardpay p.text-right.mb-0 {
+    font-size: 75px;
+    line-height: 0px;
+    margin: 41px -24px 40px -10px;
+}
+
+.title_sign {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    top: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-pills .bg-favtabs.active,
+.nav-pills .show>.bg-favtabs {
+    color: #fff !important;
+    background-color: #000 !important;
+    opacity: 1.0 !important;
+}
+
+.btn-check:active+.btn-newcheck,
+.btn-check:checked+.btn-newcheck,
+.btn-newcheck.active,
+.btn-newcheck:active,
+.show>.btn-newcheck.dropdown-toggle {
+    color: #fff !important;
+    background-color: #b02a37 !important;
+    border-color: #a52834 !important;
+}
+
+.btn-newcheck {
+    width: 110px;
+    height: 43px;
+}
+
+:root {
+    --white: #ffffff;
+    --orange: #FF4800;
+    --text-grey: #555555;
+    --silver: #CBCBCB;
+    --dark: #000000;
+    --light-grey: #D8DADC;
+    --dark-silver: #B3B3B3
+}
+
+
+
+
+
+.splash_bg {
+    background-image: url('http://restaurant.develop.helloapps.io/files/splash-img.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.index_slider .slick-slide {
+    width: unset !important;
+}
+
+/* .slide_slider {
+    height: 91vh;
+} */
+.detail_slider .detail_item .logo-over {
+    position: absolute;
+    top: 80px;
+    margin-left: 50px;
+    z-index: 99;
+}
+
+.osahan-index .logo-center img {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    /* IE 9 */
+    -webkit-transform: translate(-50%, -50%);
+    /* Chrome, Safari, Opera */
+
+}
+
+.login-page .text-divider {
+    --text-divider-gap: 1rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-grey);
+    letter-spacing: 0.1em;
+}
+
+.login-page .text-divider::before,
+.text-divider::after {
+    content: '';
+    height: 1px;
+    background-color: var(--silver);
+    flex-grow: 1;
+}
+
+.login-page .text-divider::before {
+    margin-right: var(--text-divider-gap);
+}
+
+.login-page .text-divider::after {
+    margin-left: var(--text-divider-gap);
+}
+
+.save-btn {
+    background-color: var(--orange)!important;
+    color: var(--white)!important;
+    font-weight: bold;
+}
+
+.varification-p {
+    font-size: 16px;
+}
+
+.varification-h {
+    font-size: 2rem;
+}
+
+.home-logo h5 {
+    color: var(--orange);
+}
+
+.menu-items span {
+    font-size: 10px;
+}
+
+.menu-items p {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: -13px;
+}
+
+.menu-items .dine-in {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.menu-items .search-input {
+    height: 2em;
+}
+
+.menu-items .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    top: 88px;
+    display: block;
+    right: 16px;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 2rem;
+    text-align: center;
+    pointer-events: none;
+    color: var(--silver);
+}
+
+.featured_item .logo-over {
+    position: absolute;
+    top: 40px;
+    margin-left: 85px;
+}
+
+.food-section img {
+    width: 100%;
+}
+
+.food-section .food-items {
+    position: relative;
+}
+
+.food-section p {
+    position: absolute;
+    bottom: 5px;
+    margin-bottom: 5px;
+    left: 15px;
+    font-size: 15px;
+}
+
+.food-cart {
+    position: relative;
+}
+
+.food-cart .add-btn {
+    position: absolute;
+    bottom: -15px;
+    width: 80px;
+    font-size: 10px;
+    left: 22px;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 700;
+    height: 25px;
+    padding: 4px;
+}
+
+
+.food-cart .input-group {
+    background: var(--dark);
+    height: 25px;
+    width: 80px;
+    left: 10px;
+    bottom: 10px;
+    align-items: center;
+    border-radius: 4px;
+
+}
+
+.food-cart .input-group button {
+    height: 25px;
+    border: none;
+    outline: none;
+    color: var(--white);
+    padding: revert;
+
+}
+
+.food-cart .input-group input {
+    height: 25px;
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 12px;
+}
+
+.food-cart .input-group .btn-plus:focus,
+.food-cart .input-group .btn-minus:focus {
+    outline: none;
+    box-shadow: none;
+    background: var(--dark);
+}
+
+
+.view-cart {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.view-cart h4,
+.view-cart h6 {
+    font-weight: 700;
+}
+
+.tables .main-logo img,
+.dine-in .main-logo img {
+    width: unset;
+}
+
+.tables .heading-text h3,
+.dine-in .heading-text h3 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.tables .heading-text p,
+.dine-in .heading-text p {
+    font-size: 19px;
+}
+
+.tables .table-no button {
+    border: 1px solid var(--light-grey);
+    font-size: 18px;
+    font-weight: 700;
+    height: 65px;
+    width: 65px;
+}
+
+.tables .submit-btn,
+.dine-in .submit-btn {
+    color: var(--white);
+    background: var(--orange);
+    font-weight: 700;
+}
+
+.dine-in .check-buttons button,
+.check-buttons a {
+    border: 1px solid var(--light-grey);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.order-details .order-summary p {
+    font-size: 9px;
+    color: var(--dark-silver);
+}
+
+.order-details .unbilled p {
+    font-size: 10px;
+    color: var(--dark-silver);
+}
+
+.order-details .unbilled h6 {
+    color: var(--orange);
+}
+
+.rounds .round-no {
+    color: var(--orange);
+}
+
+.rounds .food-name {
+    font-size: 12px;
+    font-weight: 800 !important;
+}
+
+.rounds .input-group {
+    /* background: black; */
+    height: 25px;
+    width: 80px;
+    align-items: center;
+    border-radius: 4px;
+
+}
+
+.rounds .input-group button {
+    height: 25px;
+    border: none;
+    outline: none;
+    padding: revert;
+
+}
+
+.rounds .input-group input {
+    height: 25px;
+
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.rounds .input-group .btn-plus:focus,
+.rounds .input-group .btn-minus:focus {
+    outline: none;
+    box-shadow: none;
+    background: var(--white);
+}
+
+.place-order {
+    background-color: #ECEDED4D;
+    border-radius: 20px;
+}
+
+.place-order p {
+    color: #B7B8b8;
+}
+
+.success-box {
+    background-color: var(--white);
+}
+
+.add-tip .tip {
+    color: var(--orange);
+}
+
+.add-tip button img {
+    top: 35%;
+    left: 60%;
+    padding: 3px;
+    background-color: var(--orange);
+}
+
+.add-tip button:focus {
+    border-color: var(--orange) !important;
+    color: var(--orange) !important;
+}
+
+.add-tip button .close4 {
+
+    left: 75%;
+
+}
+
+.bg-orange {
+    background-color: var(--orange);
+}
+
+.text-orange {
+    color: var(--orange);
+}
+
+
+
+@media only screen and (max-width: 320px) and (min-width:280px) {
+    .food-cart .input-group {
+        left: 0;
+
+    }
+
+    .food-cart .add-btn {
+        left: 17px;
+        width: 70px;
+    }
+
+    .add-tip button img {
+        left: 75%;
+
+    }
+
+    .add-tip button .close4 {
+
+        left: 95%;
+
+    }
+
+}
+.web-footer,
+.navbar.navbar-expand-lg{
+    display: none!important;
+}
