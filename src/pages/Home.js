@@ -11,6 +11,9 @@ export function Home() {
 
     useEffect(() => {
         getData()
+        if (!table) {
+            navigate('/table')
+        }
     }, [])
 
     const getData = async () => {
@@ -25,9 +28,9 @@ export function Home() {
             <section className="border-bottom bg-white p-3">
                 <div className="row justify-content-between">
                     <div className="col float-start home-logo">
-                        <h5>Dilli32</h5>
+                        <h5>{restaurant?.restaurant_name}</h5>
                     </div>
-                    <div className="col float-end text-end profile-img">
+                    <div className="col float-end text-end profile-img text-right">
                         <NavLink to="/profile" className="profile-icon"><img src="http://restaurant.develop.helloapps.io/files/profile-icon.png" alt="" /></NavLink>
                     </div>
                 </div>
@@ -37,18 +40,14 @@ export function Home() {
                     <div className="col-4 ">
                         <NavLink to="/table" className="text-dark">
                             <div className="row">
-                                <div className="col-6 me-0 pe-0">
+                                <div className="col-9 me-0 pe-0">
                                     <span>TABLE NO</span>
                                 </div>
-                                <div className="col-6 recycle-icon ">
+                                <div className="col-3 recycle-icon ">
                                     <img src="http://restaurant.develop.helloapps.io/files/refresh.png" className="mt-2" alt="" />
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-6 table-no">
-                                    <p>{table}</p>
-                                </div>
-                            </div>
+                            <p>{table}</p>
                         </NavLink>
                     </div>
                     <NavLink to="/dinein" className="col-4">
@@ -65,21 +64,23 @@ export function Home() {
                 </div>
             </div>
 
-            <section className="featured py-3 pl-3 bg-white body_rounded ">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="featured_slider carousel-inner">
-                        {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <NavLink class={"carousel-item " + (key == 0 ? "active" : "")} key={key} to="/">
-                            <div className="detail_item">
-                                <img style={{ width: '100%' }} src={config.imageURL + item.image} className="logo-over" alt="logo" />
+            <section className="featured">
+                <section>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
+                                <NavLink key={key} to="/">
+                                    <img src={config.imageURL + item.image} className="logo-over" alt="logo" />
+                                </NavLink>
                             </div>
-                        </NavLink>))}
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </section>
             </section>
             <div className="px-3">
-
                 <div className="title mb-3 d-flex align-items-center">
-                    <h6 className="mb-0 fw-bold">What would you like to order?</h6>
+                    <h4 className="mb-0 fw-bold">What would you like to order?</h4>
                 </div>
                 <section className=" body_rounded position-relative row food-section">
                     {group.map((item, key) => <NavLink key={key} to={`/details/${item.name}`} className="col-6 pr-2">

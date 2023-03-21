@@ -5,7 +5,7 @@ import { AuthModeContext } from "../contexts";
 import config from "../common/config";
 
 export function Splash() {
-    const { users, restaurant, setRestaurant  } = useContext(AuthModeContext);
+    const { users, restaurant, setRestaurant } = useContext(AuthModeContext);
 
     useEffect(() => {
         getData()
@@ -26,6 +26,7 @@ export function Splash() {
                         <NavLink to={users?.auth_key ? "/home" : "/login"}>
                             <img src={restaurant?.restaurant_logo ? config.imageURL + restaurant.restaurant_logo : "http://restaurant.develop.helloapps.io/files/logo-img.png"} className="img-fluid" alt="logo" />
                         </NavLink>
+                        <NavLink to={users?.auth_key ? "/home" : "/login"}><button class="btn btn-primary">{restaurant?.restaurant_name}</button></NavLink>
                     </div>
                     <div className="fixed-bottom text-center p-4">
                         <img src="http://restaurant.develop.helloapps.io/files/powered by.png" alt="" />

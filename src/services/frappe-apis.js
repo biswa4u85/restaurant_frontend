@@ -43,7 +43,7 @@ export function apiPostCall(path, params) {
     let token = params.token
     delete params.token
     let newUrl = `${path}`
-    return axiosAPI.post(newUrl, params, { headers: { 'Authorization': token } })
+    return axiosAPI.post(newUrl, params, { headers: { 'Content-Type': 'application/json', 'Authorization': token } })
         .then((response) => {
             return response.data
         })

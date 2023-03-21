@@ -26,7 +26,7 @@ export function Profile() {
         <>
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bolder"><i className="btn_detail  mdi mdi-chevron-left "></i>My Profile</NavLink>
+                    <NavLink to="/home" className="text-dark fw-bolder"><i className="btn_detail fa fa-chevron-left"></i>My Profile</NavLink>
                 </div>
             </div>
             <div className="order-details  shadow-sm box_rounded  p-3 m-3 pb-0">

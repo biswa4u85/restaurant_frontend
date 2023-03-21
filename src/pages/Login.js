@@ -30,13 +30,15 @@ export function Login() {
     return (
         <>
             <section>
-                <div className="detail_slider mb-0">
-                    {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <NavLink key={key} to="/">
-                        <div className="detail_item">
-                            <img src={config.imageURL + item.image} className="logo-over" alt="logo" />
-                            {/* <img src={config.imageURL + item.image} className="img-fluid w-100" /> */}
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
+                            <NavLink key={key} to="/">
+                                <img src={config.imageURL + item.image} className="logo-over" alt="logo" />
+                            </NavLink>
                         </div>
-                    </NavLink>))}
+                        ))}
+                    </div>
                 </div>
             </section>
 

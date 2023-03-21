@@ -2,93 +2,126 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { apiGetCall } from "../services/frappe-apis";
+import { apiPostCall } from "../services/frappe-apis";
 
 export function Cart() {
     let navigate = useNavigate();
-    const { users, setUsers, cart, setCart } = useContext(AuthModeContext);
-    const [orders, setOrders] = useState([])
+    const { users, table, setUsers, cart, setCart } = useContext(AuthModeContext);
 
-    useEffect(() => {
-        getData()
-    }, [])
+    const updateCart = async (item, type) => {
+        let tempCart = JSON.parse(JSON.stringify(cart))
+        let total = tempCart?.total ? tempCart?.total : 0
+        let price = tempCart?.price ? tempCart?.price : 0
+        let items = tempCart?.items ? tempCart?.items : {}
+        if (type == 'add') {
+            if (item.item_name in items) {
+                items[item.item_name] = { item_name: item.item_name, item_code: item.item_code, count: Number((items[item.item_name]).count) + 1, rate: item.rate }
+            } else {
+                items[item.item_name] = { item_name: item.item_name, item_code: item.item_code, count: 1, rate: item.rate }
+            }
+            total = total + 1
+            price = price + Number(item.rate)
+        } else {
+            if (Number((items[item.item_name]).count) == 1) {
+                delete items[item.item_name]
+            } else {
+                items[item.item_name] = { item_name: item.item_name, item_code: item.item_code, count: Number((items[item.item_name]).count) - 1, rate: item.rate }
+            }
+            if (total > 0) {
+                total = total - 1
+            } else {
+                total = 0
+            }
+            if (price > 0) {
+                price = price - Number(item.rate)
+            } else {
+                price = 0
+            }
 
-    const getData = async () => {
-        // console.log(users.customer_id)
-        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_current_order?customer_id=${'Customer One'}`, { token: `Basic ${users.auth_key}` })
-        if (orders.status_code == 200) {
-            setOrders(orders.current_order)
         }
+        tempCart['items'] = items
+        tempCart['total'] = total
+        tempCart['price'] = price
+        setCart(tempCart)
     };
 
-    const placeOrder = () => {
-        let element = document.getElementById('orderSummary')
-        element.classList.remove('d-none')
+    const placeOrder = async () => {
+        if (cart.items) {
+            let params = {
+                "order": {
+                    "customer_id": users?.full_name,
+                    "table_no": table,
+                    order_items: []
+                }
+            }
+            for (let key in cart.items) {
+                params.order.order_items.push({
+                    "item_code": cart.items[key].item_code,
+                    "qty": cart.items[key].count,
+                    "rate": cart.items[key].rate,
+                    "instructions": " "
+                })
+            }
+            let orders = await apiPostCall(`de_restaurant_backend.api.v_0_1.order.place_order`, { ...params, token: `Basic ${users.auth_key}` })
+            if (orders.status_code == 200) {
+                navigate('/order-summary')
+            }
+        }
     }
-
-    console.log(cart)
 
     return (
         <>
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail  mdi mdi-chevron-left "></i>Review Order</NavLink>
+                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Review Order</NavLink>
                 </div>
             </div>
 
-            {orders.map((item, key) => <div key={key}>
+            <div>
                 <div className="order-details  shadow-sm box_rounded  p-3 m-3 pb-0">
                     <div className="row order-summary border-bottom">
                         <div className="col-6">
-                            <h6 className="fw-bold">Order #{item.order_id}</h6>
+                            <h6 className="fw-bold">TABLE NO. #{table}</h6>
                         </div>
-                        <div className="col-6 ">
-                            <div className="row float-end">
-                                <div className="col-7">
-                                    <p className="p-0 m-0">TABLE NO.</p>
-                                    <p className="fw-bolder text-dark">{item.table_no}</p>
-                                </div>
-                                <div className="col-5">
-                                    <p className="p-0 m-0">GUESTS</p>
-                                    <p className="fw-bolder text-dark">{users.full_name}</p>
-                                </div>
-                            </div>
+                        <div className="col-6 text-right">
+                            <p className="p-0 m-0">GUESTS</p>
+                            <p className="fw-bolder text-dark">{users?.full_name}</p>
                         </div>
                     </div>
                     <div className="row align-items-center unbilled">
                         <div className="col me-0 pe-0 ">
-                            <h4 className="fw-bolder">₹{item.payment[0].grand_total}</h4>
+                            <h4 className="fw-bolder">₹{cart?.price}</h4>
                         </div>
                         <div className="col mt-3 ms-0 ps-0 ">
-                            <p className=" float-start">GRAND TOTAL <br />1 item(s)  served </p>
+                            <p className=" float-start">GRAND TOTAL <br />{cart?.total} item(s)  served </p>
                         </div>
                         <div className="col ">
                             <NavLink to="/home">
-                                <h6 className="float-end fw-bolder mt-3 "> {item.status}
+                                <h6 className="float-end fw-bolder mt-3 "> {'Pending'}
                                     <img src="http://restaurant.develop.helloapps.io/files/Vector (3).png" alt="" />
                                 </h6>
                             </NavLink>
                         </div>
                     </div>
                 </div>
-                {(item.menu).map((menu, k) => <section key={k} className=" border-bottom">
+                {cart?.items && (Object.keys(cart.items)).map((menu, k) => <section key={k} className=" border-bottom">
                     <div className="rounds m-3 mt-4">
-                        <h6 className="round-no">Round #2</h6>
+                        <h6 className="round-no">Item #{Number(k) + 1}</h6>
                         <div className="row mt-3">
                             <div className="col">
                                 <img src="http://restaurant.develop.helloapps.io/files/veg.png" alt="" />
-                                <h6 className="fw-bolder d-inline food-name">{menu.item_name}</h6>
+                                <h6 className="fw-bolder d-inline food-name"> {menu}</h6>
                             </div>
                             <div className="col">
                                 <div className=" input-group inline-group shadow-sm float-end ">
                                     <div className="input-group-prepend">
-                                        <button className="btn btn-outline-secondary btn-minus">
+                                        <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(cart.items[menu], 'minus')}>
                                             <img src="http://restaurant.develop.helloapps.io/files/minus-dark.png" className="text-white" alt="" />
                                         </button>
                                     </div>
-                                    <input className="form-control quantity" min="0" name="quantity" value={menu.qty} type="number" />
+                                    <input className="form-control quantity" value={Number(cart.items[menu].count)} />
                                     <div className="input-group-append">
-                                        <button className="btn btn-outline-secondary btn-plus">
+                                        <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(cart.items[menu], 'add')}>
                                             <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />
                                         </button>
                                     </div>
@@ -97,15 +130,15 @@ export function Cart() {
                         </div>
                         <div className="row mt-2">
                             <div className="col">
-                                <h6 className="fw-bolder ms-3">₹{menu.rate}</h6>
+                                <h6 className="fw-bolder ms-3">₹{cart.items[menu].rate}</h6>
                             </div>
                             <div className="col">
-                                <h6 className="fw-bolder float-end">₹{Number(menu.rate) * Number(menu.qty)}</h6>
+                                <h6 className="fw-bolder float-end">₹{Number(cart.items[menu].rate) * Number(cart.items[menu].count)}</h6>
                             </div>
                         </div>
                     </div>
                 </section>)}
-            </div>)}
+            </div>
 
 
 
@@ -129,7 +162,7 @@ export function Cart() {
                         <h6 className="fw-bolder">SUB TOTAL</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{orders[0]?.payment[0]?.grand_total - orders[0]?.payment[0]?.total_tax}</h6>
+                        <h6 className="fw-bolder float-end">₹{cart?.price}</h6>
                     </div>
                 </div>
                 <div className="row border-bottom pb-3 mt-2">
@@ -137,7 +170,7 @@ export function Cart() {
                         <h6 className="fw-bolder">TAXES</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{orders[0]?.payment[0]?.total_tax}</h6>
+                        <h6 className="fw-bolder float-end">₹{"0"}</h6>
                     </div>
                 </div>
                 <div className="row pb-3 mt-3">
@@ -145,7 +178,7 @@ export function Cart() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col">
-                        <h4 className="fw-bolder float-end">₹{orders[0]?.payment[0]?.grand_total}</h4>
+                        <h4 className="fw-bolder float-end">₹{cart?.price}</h4>
                     </div>
                 </div>
                 <div className="mt-2">
@@ -153,10 +186,10 @@ export function Cart() {
                 </div>
                 <div className="row mt-4">
                     <div className="col">
-                        <p className="fw-bolder">GRAND TOTAL</p>
+                        <p className="fw-bolder">TOTAL COUNT</p>
                     </div>
                     <div className="col">
-                        <p className="fw-bolder float-end">₹{orders[0]?.payment[0]?.grand_total}</p>
+                        <p className="fw-bolder float-end">{cart?.total}</p>
                     </div>
                 </div>
             </div>

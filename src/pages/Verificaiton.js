@@ -12,7 +12,7 @@ export function Verificaiton() {
         <>
             <div className="d-flex align-items-center p-3 gurdeep-osahan-inner-header  w-100">
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="back_button"><i className="btn_detail  shadow-sm mdi mdi-chevron-left "></i></NavLink>
+                    <NavLink to="/home" className="back_button"><i className="btn_detail fa fa-chevron-left"></i></NavLink>
                 </div>
 
             </div>

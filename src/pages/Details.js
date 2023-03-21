@@ -27,9 +27,9 @@ export function Details() {
         let items = tempCart?.items ? tempCart?.items : {}
         if (type == 'add') {
             if (item.item_name in items) {
-                items[item.item_name] = { count: Number((items[item.item_name]).count) + 1, rate: item.rate }
+                items[item.item_name] = { item_name: item.item_name, item_code: item.item_code, count: Number((items[item.item_name]).count) + 1, rate: item.rate }
             } else {
-                items[item.item_name] = { count: 1, rate: item.rate }
+                items[item.item_name] = { item_name: item.item_name, item_code: item.item_code, count: 1, rate: item.rate }
             }
             total = total + 1
             price = price + Number(item.rate)
@@ -37,7 +37,7 @@ export function Details() {
             if (Number((items[item.item_name]).count) == 1) {
                 delete items[item.item_name]
             } else {
-                items[item.item_name] = { count: Number((items[item.item_name]).count) - 1, rate: item.rate }
+                items[item.item_name] = { item_name: item.item_name, item_code: item.item_code, count: Number((items[item.item_name]).count) - 1, rate: item.rate }
             }
             if (total > 0) {
                 total = total - 1
@@ -61,7 +61,7 @@ export function Details() {
         <div className="bg-white">
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail  mdi mdi-chevron-left "></i>Dilli Ki Jaan</NavLink>
+                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Dilli Ki Jaan</NavLink>
                 </div>
             </div>
             <div className="mb-5">
@@ -98,12 +98,12 @@ export function Details() {
                     </div>
                 </section>
             </div>
-            {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom">
+            {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
                 <div className="row mb-3 ms-2 align-items-center">
                     <div className="col float-start ">
                         <p className=" mt-3  mb-1">{cart.total} ITEM</p>
                         <h4 className=" mt-0  float-left d-inline">₹{cart.price}</h4>
-                        <span className="ms-2 ">plus taxes</span>
+                        <span className="ms-2 " style={{ display: 'inline-block', padding: '5px 0 0 5px' }}>plus taxes</span>
                     </div>
                     <div className="col float-end ">
                         <NavLink to="/cart" className="text-white text-center ">
