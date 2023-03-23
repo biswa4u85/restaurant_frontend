@@ -11,11 +11,11 @@ export function Login() {
     let navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { restaurant, setUsers } = useContext(AuthModeContext);
-    let data = {
-        username: "1234567890",
-        password: "admin@123"
-    }
-    const onSubmit = async (data1) => {
+    // let data = {
+    //     username: "1234567890",
+    //     password: "admin@123"
+    // }
+    const onSubmit = async (data) => {
         let user = await loginApi(`de_restaurant_backend.api.v_0_1.login.login`, data)
         if (user.status == 'error') {
             toast.error(JSON.stringify(user.error))

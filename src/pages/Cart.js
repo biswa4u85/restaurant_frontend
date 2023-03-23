@@ -85,7 +85,7 @@ export function Cart() {
         <>
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Review Order</NavLink>
+                    <NavLink to="/details" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Review Order</NavLink>
                 </div>
             </div>
 

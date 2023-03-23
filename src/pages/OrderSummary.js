@@ -141,7 +141,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder">SUB TOTAL</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{orders[0]?.payment[0]?.grand_total - orders[0]?.payment[0]?.total_tax}</h6>
+                        <h6 className="fw-bolder float-end">₹{(orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) - (orders[0]?.payment[0]?.total_tax ? orders[0]?.payment[0]?.total_tax : 0)}</h6>
                     </div>
                 </div>
                 <div className="row mt-2">
@@ -173,7 +173,7 @@ export function OrderSummary() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col">
-                        <h4 className="fw-bolder float-end">₹{orders[0]?.payment[0]?.grand_total + Number(tips) + Number(coupon)}</h4>
+                        <h4 className="fw-bolder float-end">₹{(orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips) + Number(coupon)}</h4>
                     </div>
                 </div>
 
