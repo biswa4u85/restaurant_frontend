@@ -24,7 +24,7 @@ export function Splash() {
                 <div className="text-center">
                     <div className="logo-center text-center p-4">
                         <NavLink to={users?.auth_key ? "/home" : "/login"}>
-                            <img src={restaurant?.restaurant_logo ? config.imageURL + restaurant.restaurant_logo : "http://restaurant.develop.helloapps.io/files/logo-img.png"} className="img-fluid" alt="logo" />
+                            <img src={config?.imageURL + restaurant?.restaurant_logo} className="img-fluid" alt="logo" />
                         </NavLink>
                         <NavLink to={users?.auth_key ? "/home" : "/login"}><button class="btn btn-primary">{restaurant?.restaurant_name}</button></NavLink>
                     </div>

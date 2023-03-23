@@ -14,8 +14,7 @@ export function Profile() {
     }, [])
 
     const getData = async () => {
-        // console.log(users.customer_id)
-        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_past_orders?customer_id=${'Customer One'}`, { token: `Basic ${users.auth_key}` })
+        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_past_orders?customer_id=${users.customer_id}`, { token: `Basic ${users.auth_key}` })
         if (orders.status_code == 200) {
             setOrders(orders.past_orders)
         }

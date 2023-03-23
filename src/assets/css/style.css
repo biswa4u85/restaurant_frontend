@@ -867,6 +867,7 @@ a.slick-slide {
 .check-buttons a {
     border: 1px solid var(--light-grey);
     font-size: 19px;
+    height: auto;
     font-weight: 700;
 }
 
@@ -970,7 +971,9 @@ a.slick-slide {
     color: var(--orange);
 }
 
-
+.takeout-btn{
+    height: auto;
+}
 
 @media only screen and (max-width: 320px) and (min-width:280px) {
     .food-cart .input-group {

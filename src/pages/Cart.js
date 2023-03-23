@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -6,7 +6,10 @@ import { apiPostCall } from "../services/frappe-apis";
 
 export function Cart() {
     let navigate = useNavigate();
-    const { users, table, setUsers, cart, setCart } = useContext(AuthModeContext);
+    const { users, table, cart, setCart } = useContext(AuthModeContext);
+    const [isnote, setIsnote] = useState(false)
+    const [note, setNote] = useState('')
+    let time = useRef();
 
     const updateCart = async (item, type) => {
         let tempCart = JSON.parse(JSON.stringify(cart))
@@ -45,11 +48,19 @@ export function Cart() {
         setCart(tempCart)
     };
 
+    const addingNotes = (value) => {
+        clearTimeout(time.current)
+        time.current = setTimeout(() => {
+            setNote(value)
+            // setIsnote(false)
+        }, 500)
+    }
+
     const placeOrder = async () => {
         if (cart.items) {
             let params = {
                 "order": {
-                    "customer_id": users?.full_name,
+                    "customer_id": users?.customer_id,
                     "table_no": table,
                     order_items: []
                 }
@@ -59,11 +70,12 @@ export function Cart() {
                     "item_code": cart.items[key].item_code,
                     "qty": cart.items[key].count,
                     "rate": cart.items[key].rate,
-                    "instructions": " "
+                    "instructions": note
                 })
             }
             let orders = await apiPostCall(`de_restaurant_backend.api.v_0_1.order.place_order`, { ...params, token: `Basic ${users.auth_key}` })
             if (orders.status_code == 200) {
+                setCart({})
                 navigate('/order-summary')
             }
         }
@@ -146,33 +158,36 @@ export function Cart() {
                 <NavLink to="/home">
                     <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />
                     <p className="d-inline ms-2 text-dark">Add more item(s)</p>
-
                     <img src="http://restaurant.develop.helloapps.io/files/Vector (4).png" alt="" className="float-end me-2" />
                 </NavLink>
             </section>
             <section className="border-bottom cooking-requests p-3">
-                <NavLink to="/home">
-                    <img src="http://restaurant.develop.helloapps.io/files/Vector (12).png" alt="" />
-                    <p className="d-inline ms-2 text-dark">Add cooking requests</p>
-                </NavLink>
+                {isnote ? <>
+                    <textarea placeholder="add note" onChange={(obj) => addingNotes(obj.target.value)} style={{ width: "100%" }} />
+                </>
+                    :
+                    <span onClick={() => setIsnote(true)}>
+                        <img src="http://restaurant.develop.helloapps.io/files/Vector (12).png" alt="" />
+                        <p className="d-inline ms-2 text-dark">Add cooking requests</p>
+                    </span>}
             </section>
             <div className="place-order  p-3 m-3 mb-5 shadow-sm ">
-                <div className="row mt-4">
+                {/* <div className="row mt-4">
                     <div className="col">
                         <h6 className="fw-bolder">SUB TOTAL</h6>
                     </div>
                     <div className="col">
                         <h6 className="fw-bolder float-end">₹{cart?.price}</h6>
                     </div>
-                </div>
-                <div className="row border-bottom pb-3 mt-2">
+                </div> */}
+                {/* <div className="row border-bottom pb-3 mt-2">
                     <div className="col">
                         <h6 className="fw-bolder">TAXES</h6>
                     </div>
                     <div className="col">
                         <h6 className="fw-bolder float-end">₹{"0"}</h6>
                     </div>
-                </div>
+                </div> */}
                 <div className="row pb-3 mt-3">
                     <div className="col">
                         <h4 className="fw-bolder">TOTAL</h4>

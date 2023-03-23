@@ -24,12 +24,12 @@ export function SignUp() {
     };
     return (
         <>
-           <section>
+            <section>
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
                             <NavLink key={key} to="/">
-                                <img src={config.imageURL + item.image} className="logo-over" alt="logo" />
+                                <img src={config.imageURL + item.image} width="100%" height="350" className="logo-over" alt="logo" />
                             </NavLink>
                         </div>
                         ))}

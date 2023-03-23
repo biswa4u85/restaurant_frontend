@@ -20,8 +20,7 @@ export function OrderSummary() {
     }, [])
 
     const getData = async () => {
-        // console.log(users.customer_id)
-        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_current_order?customer_id=${'Customer One'}`, { token: `Basic ${users.auth_key}` })
+        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_current_order?customer_id=${users?.customer_id}`, { token: `Basic ${users.auth_key}` })
         if (orders.status_code == 200) {
             setOrders(orders.current_order)
         }
@@ -72,25 +71,37 @@ export function OrderSummary() {
                     </div>
                 </div>
             </div>
-            {orders.map((item, key) => <section key={key} className=" border-bottom">
-                {(item.menu).map((menu, k) => <div className="rounds m-3 mt-4">
-                    <h6 className="round-no">Round #{menu.round}</h6>
-                    <div className="row mt-3">
-                        <div className="col">
-                            <img src="http://restaurant.develop.helloapps.io/files/veg.png" alt="" />
-                            <h6 className="fw-bolder d-inline food-name">{menu.qty} x {menu.item_name}</h6>
-                        </div>
-                        <div className="col">
-                            <h6 className="fw-bolder float-end">₹{menu.rate * Number(menu.qty)}</h6>
-                        </div>
-                    </div>
-                    <div className="row mt-2">
-                        <div className="col">
-                            <h6 className="fw-bolder ms-3">₹{menu.rate}</h6>
-                        </div>
-                    </div>
-                </div>)}
-            </section>)}
+            {orders.map((item, key) => {
+                const grouped = (item.menu).reduce((acc, obj) => {
+                    const key = obj.round;
+                    if (!acc[key]) {
+                        acc[key] = [];
+                    }
+                    acc[key].push(obj);
+                    return acc;
+                }, {});
+                return <section key={key} className=" border-bottom">
+                    {Object.keys(grouped).map((menu, k) => <div key={k} className="rounds m-3 mt-4">
+                        <h6 className="round-no">Round #{menu}</h6>
+                        {grouped[menu].map((it, y) => <div key={y}>
+                            <div className="row mt-3">
+                                <div className="col">
+                                    <img src="http://restaurant.develop.helloapps.io/files/veg.png" alt="" />
+                                    <h6 className="fw-bolder d-inline food-name">{it.qty} x {it.item_name}</h6>
+                                </div>
+                                <div className="col">
+                                    <h6 className="fw-bolder float-end">₹{it.rate * Number(it.qty)}</h6>
+                                </div>
+                            </div>
+                            <div className="row mt-2">
+                                <div className="col">
+                                    <h6 className="fw-bolder ms-3">₹{it.rate}</h6>
+                                </div>
+                            </div>
+                        </div>)}
+                    </div>)}
+                </section>
+            })}
             <section className="border-bottom add-more p-3">
                 <NavLink hretof="/home" >
                     <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />

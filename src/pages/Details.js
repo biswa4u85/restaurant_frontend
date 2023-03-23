@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import config from "../common/config";
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { apiGetCall } from "../services/frappe-apis";
 
 export function Details() {
     let navigate = useNavigate();
-    const { cart, setCart } = useContext(AuthModeContext);
+    const [searchParams] = useSearchParams();
+    const search = searchParams.get('search');
+    const type = searchParams.get('type');
+    const { restaurant, cart, setCart } = useContext(AuthModeContext);
     const [items, setitems] = useState([])
+    const [itemType, setIemType] = useState('')
+
     useEffect(() => {
         getData()
-    }, [])
+    }, [itemType])
 
     const getData = async () => {
-        let menus = await apiGetCall(`de_restaurant_backend.api.v_0_1.menu.get_items?start=0`, {})
+        let menus = await apiGetCall(`de_restaurant_backend.api.v_0_1.menu.search?start=0&query=${search ? search : ''}&item_group=${type ? type : ''}&item_type=${itemType ? itemType : ''}`, {})
         if (menus.status != 'error') {
             setitems(menus.menu)
         }
@@ -60,8 +64,30 @@ export function Details() {
     return (
         <div className="bg-white">
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
+                <div style={{ float: 'right', display: 'flex' }}>
+                    <div style={{ padding: '0 10px' }}>
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="http://restaurant.develop.helloapps.io/files/veg.png" className="float-start" alt="" />
+                        <input
+                            type="radio"
+                            name="site_name"
+                            value={'VEG'}
+                            checked={itemType === 'VEG'}
+                            onChange={() => setIemType('VEG')}
+                        />
+                    </div>
+                    <div style={{ padding: '0 10px' }}>
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="http://restaurant.develop.helloapps.io/files/veg.png" className="float-start" alt="" />
+                        <input
+                            type="radio"
+                            name="site_name"
+                            value={'NONVEG'}
+                            checked={itemType === 'NONVEG'}
+                            onChange={() => setIemType('NONVEG')}
+                        />
+                    </div>
+                </div>
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Dilli Ki Jaan</NavLink>
+                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>{restaurant.restaurant_name}</NavLink>
                 </div>
             </div>
             <div className="mb-5">

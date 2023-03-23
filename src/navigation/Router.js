@@ -29,7 +29,7 @@ function Routers() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/dinein" element={<Dinein />} />
           <Route path="/table" element={<Table />} />
-          <Route path="/details/:id" element={<Details />} />
+          <Route path="/details" element={<Details />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order-summary" element={<OrderSummary />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
