@@ -14,25 +14,33 @@ export function Profile() {
     }, [])
 
     const getData = async () => {
-        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_past_orders?customer_id=${users.customer_id}`, { token: `Basic ${users.auth_key}` })
+        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_past_orders?customer_id=${users?.customer_id}`, { token: `Basic ${users?.auth_key}` })
         if (orders.status_code == 200) {
             setOrders(orders.past_orders)
         }
     };
 
+    const logOut = async () => {
+        setUsers(null)
+    };
 
     return (
         <>
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
-                <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bolder"><i className="btn_detail fa fa-chevron-left"></i>My Profile</NavLink>
+                <div className="row">
+                    <div className="col-10">
+                        <NavLink to="/home" className="text-dark fw-bolder"><i className="btn_detail fa fa-chevron-left"></i>My Profile</NavLink>
+                    </div>
+                    <div className="col-2">
+                        <NavLink onClick={() => logOut()} to="/auth" className="profile-icon"><i class="fa fa-sign-out" aria-hidden="true"></i></NavLink>
+                    </div>
                 </div>
             </div>
             <div className="order-details  shadow-sm box_rounded  p-3 m-3 pb-0">
                 <div className="row align-items-center">
                     <div className="col">
-                        <h6 className="fw-bolder">{users.full_name}</h6>
-                        <p>+91 {users.mobile_no}</p>
+                        <h6 className="fw-bolder">{users?.full_name}</h6>
+                        <p>+91 {users?.mobile_no}</p>
                     </div>
                     <div className="col ">
                         <NavLink to="/home" className="text-orange">

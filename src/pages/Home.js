@@ -39,6 +39,7 @@ export function Home() {
                         <h5>{restaurant?.restaurant_name}</h5>
                     </div>
                     <div className="col float-end text-end profile-img text-right">
+                        <NavLink to="/order-summary" className="profile-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></NavLink>
                         <NavLink to="/profile" className="profile-icon"><img src="http://restaurant.develop.helloapps.io/files/profile-icon.png" alt="" /></NavLink>
                     </div>
                 </div>

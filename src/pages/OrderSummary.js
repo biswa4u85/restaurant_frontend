@@ -12,7 +12,7 @@ export function OrderSummary() {
     const { users, setUsers } = useContext(AuthModeContext);
     const [orders, setOrders] = useState([])
     const [tips, setTips] = useState(0)
-    const [coupon, setCoupon] = useState(0)
+    const [coupons, setCoupon] = useState({})
     let timer = useRef(null)
 
     useEffect(() => {
@@ -30,10 +30,10 @@ export function OrderSummary() {
         clearTimeout(timer.current)
         timer.current = setTimeout(async () => {
             if (value) {
-                let coupons = await apiPostCall(`de_restaurant_backend.api.v_0_1.order.apply_coupon`, { token: `Basic ${users.auth_key}`, order_id: orders[0]?.order_id, coupon_code: value })
+                let coupons = await apiPostCall(`de_restaurant_backend.api.v_0_1.cart.apply_coupon`, { token: `Basic ${users.auth_key}`, order_id: orders[0]?.order_id, coupon_code: value })
                 if (coupons.status_code == 200) {
                     toast.success(coupons.message)
-                    console.log(coupons)
+                    setCoupon(coupons)
                 }
             }
         }, 500)
@@ -141,7 +141,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder">SUB TOTAL</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{(orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) - (orders[0]?.payment[0]?.total_tax ? orders[0]?.payment[0]?.total_tax : 0)}</h6>
+                        <h6 className="fw-bolder float-end">₹{((orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) - (orders[0]?.payment[0]?.total_tax ? orders[0]?.payment[0]?.total_tax : 0)).toFixed(2)}</h6>
                     </div>
                 </div>
                 <div className="row mt-2">
@@ -149,7 +149,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder">TAXES</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{orders[0]?.payment[0]?.total_tax}</h6>
+                        <h6 className="fw-bolder float-end">₹{coupons?.tax ? coupons.tax : orders[0]?.payment[0]?.total_tax}</h6>
                     </div>
                 </div>
                 <div className="row mt-2">
@@ -165,7 +165,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder text-orange">COUPON</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end text-orange">-₹{coupon}</h6>
+                        <h6 className="fw-bolder float-end text-orange">-₹{coupons?.discount_amount ? coupons.discount_amount : 0}</h6>
                     </div>
                 </div>
                 <div className="row pb-3 mt-3">
@@ -173,7 +173,7 @@ export function OrderSummary() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col">
-                        <h4 className="fw-bolder float-end">₹{(orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips) + Number(coupon)}</h4>
+                        <h4 className="fw-bolder float-end">₹{coupons?.grand_total ? coupons.grand_total : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
                     </div>
                 </div>
 

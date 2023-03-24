@@ -23,10 +23,10 @@ export function Splash() {
             <div className="osahan-index">
                 <div className="text-center">
                     <div className="logo-center text-center p-4">
-                        <NavLink to={users?.auth_key ? "/home" : "/login"}>
+                        <NavLink to={users?.auth_key ? "home" : "auth"}>
                             <img src={config?.imageURL + restaurant?.restaurant_logo} className="img-fluid" alt="logo" />
                         </NavLink>
-                        <NavLink to={users?.auth_key ? "/home" : "/login"}><button class="btn btn-primary">{restaurant?.restaurant_name}</button></NavLink>
+                        <NavLink to={users?.auth_key ? "home" : "auth"}><button class="btn btn-primary">{restaurant?.restaurant_name}</button></NavLink>
                     </div>
                     <div className="fixed-bottom text-center p-4">
                         <img src="http://restaurant.develop.helloapps.io/files/powered by.png" alt="" />

@@ -10,18 +10,12 @@ import { Splash, Login,SignUp, Verificaiton, Home, Profile, Dinein, Table, Detai
 import { AuthModeContext } from "../contexts";
 
 function Routers() {
-  const { users } = useContext(AuthModeContext);
-  useEffect(() => {
-    if (window?.frappe?.csrf_token == 'None') {
-      window.location.replace(`${window.location.origin}/login`)
-    }
-  }, [])
 
   return (
     <HashRouter>
       <Routes>
         <Route path="/" element={<Splash />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/verificaiton" element={<Verificaiton />} />
         <Route element={<Layouts />}>

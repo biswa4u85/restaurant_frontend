@@ -48,7 +48,7 @@ export function SignUp() {
                         <input className="form-control  p-3 box_rounded mb-3 " type="text" placeholder="Email" {...register("email", { required: true })} required />
                         <input className="form-control  p-3 box_rounded mb-3 " type="password" placeholder="Your Password" {...register("new_password", { required: true })} required />
                         <input className="form-control  p-3 box_rounded mb-3 " type="text" placeholder="Confirm Password" {...register("confirm_password", { required: true })} required />
-                        <div style={{ textAlign: 'right' }}><NavLink to="/login">Log in</NavLink></div>
+                        <div style={{ textAlign: 'right' }}><NavLink to="/auth">Log in</NavLink></div>
                         <div className="p-4 fixed-bottom">
                             <button type="submit" className="btn save-btn btn-block box_rounded w-100 py-3">Continue</button>
                         </div>

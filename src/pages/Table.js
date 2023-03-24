@@ -15,7 +15,7 @@ export function Table() {
     }
 
     const handleScan = (data) => {
-        alert(JSON.stringify(data))
+        // alert(JSON.stringify(data))
     }
 
     const handleError = (err) => {

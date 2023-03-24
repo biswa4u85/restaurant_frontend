@@ -1002,3 +1002,8 @@ a.slick-slide {
 .navbar.navbar-expand-lg{
     display: none!important;
 }
+.profile-icon i{
+    font-size: 25px;
+    vertical-align: middle;
+    margin-right:10px;
+}
