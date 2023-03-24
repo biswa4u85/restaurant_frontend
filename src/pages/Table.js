@@ -15,7 +15,7 @@ export function Table() {
     }
 
     const handleScan = (data) => {
-        // alert(JSON.stringify(data))
+        // console.error(JSON.stringify(data))
     }
 
     const handleError = (err) => {
@@ -32,7 +32,7 @@ export function Table() {
             />
             <div className="container-fluid tables my-5">
                 <div className="main-logo text-center">
-                    <img src={config.imageURL + restaurant.restaurant_logo} height="50" alt="" />
+                    <img src={config.imageURL + restaurant?.restaurant_logo} height="50" alt="" />
                 </div>
                 <div className="heading-text text-center mt-4">
                     <h3>Table No</h3>

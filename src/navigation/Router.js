@@ -6,8 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Layouts from "../pages/Layouts";
-import { Splash, Login,SignUp, Verificaiton, Home, Profile, Dinein, Table, Details, Cart, OrderSummary, PaymentSuccess } from "../pages";
-import { AuthModeContext } from "../contexts";
+import { Splash, Login, SignUp, Verificaiton, Home, Profile, Dinein, Table, Details, Cart, OrderSummary, PaymentSuccess } from "../pages";
 
 function Routers() {
 
