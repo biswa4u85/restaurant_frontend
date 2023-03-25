@@ -18,10 +18,10 @@ export function loginApi(path, params) {
     let headers = { 'Content-Type': 'application/json' }
     return axiosAPI.post(path, params, { headers: headers })
         .then((response) => {
-            if(response.data.status_code == 200){
+            if (response.data.status_code == 200) {
                 return response.data
-            }else{
-                toast.error(response?.data?.message ? response?.data?.message : 'Invalide login')
+            } else {
+                toast.error(response?.data?.message ? response?.data?.message : (response.data.error ? response.data.error : 'Invalide login'))
             }
         })
         .catch((error) => {

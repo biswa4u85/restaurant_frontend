@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import { NavLink } from "react-router-dom";
 import config from "../common/config";
-import QrReader from 'react-qr-scanner'
+// import QrReader from 'react-qr-scanner'
 
 
 export function Table() {
@@ -24,12 +24,12 @@ export function Table() {
 
     return (
         <>
-            <QrReader
+            {/* <QrReader
                 delay={100}
                 style={previewStyle}
                 onError={handleError}
                 onScan={handleScan}
-            />
+            /> */}
             <div className="container-fluid tables my-5">
                 <div className="main-logo text-center">
                     <img src={config.imageURL + restaurant?.restaurant_logo} height="50" alt="" />
