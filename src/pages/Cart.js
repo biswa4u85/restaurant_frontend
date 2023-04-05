@@ -75,8 +75,11 @@ export function Cart() {
             }
             let orders = await apiPostCall(`de_restaurant_backend.api.v_0_1.order.place_order`, { ...params, token: `Basic ${users.auth_key}` })
             if (orders.status_code == 200) {
-                setCart({})
-                navigate('/order-summary')
+                let confirmOrder = await apiPostCall(`de_restaurant_backend.api.v_0_1.cart.confirm_order`, { order_id: orders.order_id, token: `Basic ${users.auth_key}` })
+                if (confirmOrder.status_code == 200) {
+                    setCart({})
+                    navigate('/order-summary')
+                }
             }
         }
     }
@@ -102,7 +105,7 @@ export function Cart() {
                             <h6 className="fw-bold">TABLE NO. #{table}</h6>
                         </div>
                         <div className="col-6 text-right">
-                            <p className="p-0 m-0">GUESTS</p>
+                            <p className="p-0 m-0">GUEST</p>
                             <p className="fw-bolder text-dark">{users?.full_name}</p>
                         </div>
                     </div>
@@ -111,7 +114,7 @@ export function Cart() {
                             <h4 className="fw-bolder">₹{cart?.price}</h4>
                         </div>
                         <div className="col mt-3 ms-0 ps-0 ">
-                            <p className=" float-start">GRAND TOTAL <br />{cart?.total} item(s)  served </p>
+                            <p className=" float-start">GRAND TOTAL <br />{cart?.total} {cart.total < 2 ? 'item' : 'items'}  served </p>
                         </div>
                         <div className="col ">
                             <NavLink to="/home">

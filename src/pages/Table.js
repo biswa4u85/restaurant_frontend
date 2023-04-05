@@ -1,13 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import config from "../common/config";
+import { apiGetCall, apiPostCall } from "../services/frappe-apis";
 // import QrReader from 'react-qr-scanner'
 
 
 export function Table() {
+    let navigate = useNavigate();
+    const { users, setUsers } = useContext(AuthModeContext);
     const { restaurant, table, setTable } = useContext(AuthModeContext);
     let tables = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12", "T13", "T14"]
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = async () => {
+        let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_current_order?customer_id=${users?.customer_id}`, { token: `Basic ${users.auth_key}` })
+        if (orders.status_code == 200) {
+            if (orders?.current_order?.length > 0) {
+                navigate('/home')
+            }
+        }
+    };
+
 
     const previewStyle = {
         height: 500,

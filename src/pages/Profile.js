@@ -28,11 +28,12 @@ export function Profile() {
         <>
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div className="row">
-                    <div className="col-10">
+                    <div className="col-9">
                         <NavLink to="/home" className="text-dark fw-bolder"><i className="btn_detail fa fa-chevron-left"></i>My Profile</NavLink>
                     </div>
-                    <div className="col-2">
-                        <NavLink onClick={() => logOut()} to="/auth" className="profile-icon"><i class="fa fa-sign-out" aria-hidden="true"></i></NavLink>
+                    <div className="col-3">
+                        {/* <NavLink onClick={() => logOut()} to="/auth" className="profile-icon"><i class="fa fa-sign-out" aria-hidden="true"></i></NavLink> */}
+                        <NavLink onClick={() => logOut()} to="/auth" className="profile-icon">Log Out</NavLink>
                     </div>
                 </div>
             </div>
@@ -42,13 +43,13 @@ export function Profile() {
                         <h6 className="fw-bolder">{users?.full_name}</h6>
                         <p>+91 {users?.mobile_no}</p>
                     </div>
-                    <div className="col ">
+                    {/* <div className="col ">
                         <NavLink to="/home" className="text-orange">
                             <h6 className="float-end fw-bold"> Edit Profile
                                 <img src="http://restaurant.develop.helloapps.io/files/Vector (3).png" alt="" />
                             </h6>
                         </NavLink>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 

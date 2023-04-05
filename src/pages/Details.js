@@ -127,7 +127,7 @@ export function Details() {
             {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
                 <div className="row mb-3 ms-2 align-items-center">
                     <div className="col float-start ">
-                        <p className=" mt-3  mb-1">{cart.total} ITEM</p>
+                        <p className=" mt-3  mb-1">{cart.total} {cart.total < 2 ? 'ITEM' : 'ITEMS'}</p>
                         <h4 className=" mt-0  float-left d-inline">₹{cart.price}</h4>
                         <span className="ms-2 " style={{ display: 'inline-block', padding: '5px 0 0 5px' }}>plus taxes</span>
                     </div>

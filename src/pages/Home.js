@@ -92,9 +92,11 @@ export function Home() {
                 </div>
                 <section className=" body_rounded position-relative row food-section">
                     {group.map((item, key) => <NavLink key={key} to={`/details?type=${item.name}`} className="col-6 pr-2">
-                        <div className="bg-white box_rounded overflow-hidden mb-3 shadow-sm food-items">
-                            <img src={item.image ? config.imageURL + item.image : "http://restaurant.develop.helloapps.io/files/Rectangle 188 (2).png"} className="img-fluid" />
-                            <p className="text-white fw-bold ">{item.name}</p>
+                        <div class="card">
+                            <img src={item.image ? config.imageURL + item.image : "http://restaurant.develop.helloapps.io/files/Rectangle 188 (2).png"} className="card-img-top" />
+                            <div class="card-body">
+                                <p class="card-title">{item.name}</p>
+                            </div>
                         </div>
                     </NavLink>)}
                 </section>

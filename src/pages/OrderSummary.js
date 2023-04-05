@@ -64,7 +64,7 @@ export function OrderSummary() {
                                 <p className="fw-bolder text-dark">{orders[0]?.table_no}</p>
                             </div>
                             <div className="col-5">
-                                <p className="p-0 m-0">GUESTS</p>
+                                <p className="p-0 m-0">GUEST</p>
                                 <p className="fw-bolder text-dark">{users.full_name}</p>
                             </div>
                         </div>
@@ -103,10 +103,9 @@ export function OrderSummary() {
                 </section>
             })}
             <section className="border-bottom add-more p-3">
-                <NavLink hretof="/home" >
+                <NavLink to="/home">
                     <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />
                     <p className="d-inline ms-2 text-dark">Order more item(s)</p>
-
                     <img src="http://restaurant.develop.helloapps.io/files/Vector (4).png" alt="" className="float-end me-2" />
                 </NavLink>
             </section>

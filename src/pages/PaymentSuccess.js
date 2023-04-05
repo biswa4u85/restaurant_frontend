@@ -3,11 +3,30 @@ import { AuthModeContext } from "../contexts";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import config from "../common/config";
+import { apiGetCall } from "../services/frappe-apis";
+
+const images = {
+    "Google": 'http://restaurant.develop.helloapps.io/files/Google logo.png',
+    "Facebook": 'http://restaurant.develop.helloapps.io/files/Facebook logo.png',
+    "Instagram": 'http://restaurant.develop.helloapps.io/files/Instagram logo.png',
+}
 
 export function PaymentSuccess() {
     const { restaurant } = useContext(AuthModeContext);
     let navigate = useNavigate();
+    const [data, setData] = useState({})
 
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = async () => {
+        let data = await apiGetCall(`de_restaurant_backend.api.v_0_1.restaurant.thank_you_page`, {})
+        if (data.status_code == '200') {
+            setData(data)
+        }
+    };
 
     return (
         <div className="pb-3">
@@ -26,23 +45,17 @@ export function PaymentSuccess() {
             </div>
             <div className="container dine-in my-5">
                 <div className="main-logo text-center">
-                    <img src={config.imageURL + restaurant.restaurant_logo} height="50" alt="" />
+                    <img src={config.imageURL + restaurant.restaurant_logo} style={{ width: "75%" }} alt="" />
                 </div>
                 <div className="heading-text text-center mt-4">
-                    <h3 className="fw-bolder">THANK YOU FOR DINING WITH US.</h3>
+                    <h3 className="fw-bolder">{data.ending_message}</h3>
                     <p>We hope you come back soon! We’d love to hear feedback on your experience. </p>
                 </div>
                 <div className="container">
                     <div className="row mt-5 check-buttons">
-                        <NavLink to="/" className="btn form-control text-center py-3">
-                            <img src="http://restaurant.develop.helloapps.io/files/Google logo.png" alt="" className="me-2" /> Review us on Google
-                        </NavLink>
-                        <NavLink to="/" className="btn form-control text-center mt-3 py-3">
-                            <img src="http://restaurant.develop.helloapps.io/files/Facebook logo.png" alt="" className="me-2" /> Follow us on Facebook
-                        </NavLink>
-                        <NavLink to="/" className="btn form-control text-center mt-3 py-3">
-                            <img src="http://restaurant.develop.helloapps.io/files/Instagram logo.png" alt="" className="me-2" /> Follow us on Instagram
-                        </NavLink>
+                        {data?.review_links ? data.review_links.map((item, key) => <a key={key} target="_blank" href={item.review_link} className="btn form-control text-center py-3">
+                            <img src={images[item.platform]} alt="" className="mr-2" /> Review us on {item.platform}
+                        </a>) : null}
                     </div>
                 </div>
 

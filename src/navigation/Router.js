@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Layouts from "../pages/Layouts";
-import { Splash, Login, SignUp, Verificaiton, Home, Profile, Dinein, Table, Details, Cart, OrderSummary, PaymentSuccess } from "../pages";
+import { Splash, Login, SignUp,ForgotPassword, Verificaiton, Home, Profile, Dinein, Table, Details, Cart, OrderSummary, PaymentSuccess } from "../pages";
 
 function Routers() {
 
@@ -16,6 +16,7 @@ function Routers() {
         <Route path="/" element={<Splash />} />
         <Route path="/auth" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verificaiton" element={<Verificaiton />} />
         <Route element={<Layouts />}>
           <Route path="/home" element={<Home />} />
