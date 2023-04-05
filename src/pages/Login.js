@@ -10,7 +10,7 @@ import config from "../common/config";
 export function Login() {
     let navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { restaurant, setUsers } = useContext(AuthModeContext);
+    const { table, restaurant, setUsers } = useContext(AuthModeContext);
     const onSubmit = async (data) => {
         let user = await loginApi(`de_restaurant_backend.api.v_0_1.login.login`, data)
         if (user.status == 'error') {
@@ -18,7 +18,11 @@ export function Login() {
         } else {
             toast.success(user.message)
             setUsers(user)
-            navigate('/home')
+            if (!table) {
+                navigate('/table')
+            } else {
+                navigate('/home')
+            }
         }
     };
 

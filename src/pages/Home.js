@@ -13,7 +13,7 @@ export function Home() {
     useEffect(() => {
         getData()
         if (!table) {
-            navigate('/table')
+            // navigate('/table')
         }
     }, [])
 
