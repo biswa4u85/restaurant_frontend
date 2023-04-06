@@ -20,6 +20,7 @@ export function Table() {
         let orders = await apiGetCall(`de_restaurant_backend.api.v_0_1.order.get_current_order?customer_id=${users?.customer_id}`, { token: `Basic ${users.auth_key}` })
         if (orders.status_code == 200) {
             if (orders?.current_order?.length > 0) {
+                setTable(orders?.current_order[0].table_no)
                 navigate('/home')
             }
         }

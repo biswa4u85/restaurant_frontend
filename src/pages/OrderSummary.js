@@ -49,7 +49,7 @@ export function OrderSummary() {
         <>
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div className="left mr-auto">
-                    <NavLink to="/cart" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Order Summary</NavLink>
+                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>Order Summary</NavLink>
                 </div>
             </div>
             <div className="order-details  shadow-sm box_rounded  p-3 m-3 pb-0">

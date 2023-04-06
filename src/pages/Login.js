@@ -18,11 +18,7 @@ export function Login() {
         } else {
             toast.success(user.message)
             setUsers(user)
-            if (!table) {
-                navigate('/table')
-            } else {
-                navigate('/home')
-            }
+            navigate('/table')
         }
     };
 
