@@ -95,7 +95,7 @@ export function Home() {
                         <div class="card" style={{ marginBottom: 10 }}>
                             <img src={item.image ? config.imageURL + item.image : "http://restaurant.develop.helloapps.io/files/Rectangle 188 (2).png"} className="card-img-top" style={{ height: 150 }} />
                             <div class="card-body">
-                                <p class="card-title">{item.name}</p>
+                                <p class="card-title" style={{ left: 0 }}>{item.name}</p>
                             </div>
                         </div>
                     </NavLink>)}
