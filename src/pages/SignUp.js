@@ -16,9 +16,8 @@ export function SignUp() {
         if (user.status_code == 200) {
             toast.success(user.message)
             setUsers(user)
-            navigate('/home')
+            navigate('/table')
         } else {
-            console.log(user.error)
             toast.error(JSON.stringify(user.error))
         }
     };
