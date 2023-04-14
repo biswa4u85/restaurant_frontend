@@ -6,9 +6,9 @@ import config from "../common/config";
 import { apiGetCall } from "../services/frappe-apis";
 
 const images = {
-    "Google": 'http://restaurant.develop.helloapps.io/files/Google logo.png',
-    "Facebook": 'http://restaurant.develop.helloapps.io/files/Facebook logo.png',
-    "Instagram": 'http://restaurant.develop.helloapps.io/files/Instagram logo.png',
+    "Google": 'https://restaurant.scrollmonkey.com/files/Google logo.png',
+    "Facebook": 'https://restaurant.scrollmonkey.com/files/Facebook logo.png',
+    "Instagram": 'https://restaurant.scrollmonkey.com/files/Instagram logo.png',
 }
 
 export function PaymentSuccess() {

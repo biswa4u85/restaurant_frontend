@@ -86,7 +86,7 @@ export function OrderSummary() {
                         {grouped[menu].map((it, y) => <div key={y}>
                             <div className="row mt-3">
                                 <div className="col">
-                                    <img src="http://restaurant.develop.helloapps.io/files/veg.png" alt="" />
+                                    <img src="https://restaurant.scrollmonkey.com/files/veg.png" alt="" />
                                     <h6 className="fw-bolder d-inline food-name">{it.qty} x {it.item_name}</h6>
                                 </div>
                                 <div className="col">
@@ -104,9 +104,9 @@ export function OrderSummary() {
             })}
             <section className="border-bottom add-more p-3">
                 <NavLink to="/home">
-                    <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />
+                    <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
                     <p className="d-inline ms-2 text-dark">Order more item(s)</p>
-                    <img src="http://restaurant.develop.helloapps.io/files/Vector (4).png" alt="" className="float-end me-2" />
+                    <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-end me-2" />
                 </NavLink>
             </section>
             <section className=" border-bottom">
@@ -116,13 +116,13 @@ export function OrderSummary() {
                         {tipsList.map((item, key) => <div key={key} className="col-3 position-relative">
                             <button className="btn border pe-4 fw-bold tip-btn" id="1" onClick={() => setTips(item)}>
                                 ₹{item}
-                                <img src="http://restaurant.develop.helloapps.io/files/orange-x.png" className="d-none rounded-pill position-absolute close1 close-btn" alt="" />
+                                <img src="https://restaurant.scrollmonkey.com/files/orange-x.png" className="d-none rounded-pill position-absolute close1 close-btn" alt="" />
                             </button>
                         </div>)}
                         <div className="col-3 position-relative ">
                             <button className="btn border pe-4 fw-bold tip-btn" id="4">
                                 <input style={{ border: 'none', width: 45 }} type="number" placeholder="Other" onChange={(val) => setTips(val.target.value)} />
-                                <img src="http://restaurant.develop.helloapps.io/files/orange-x.png" className="d-none rounded-pill position-absolute close4 close-btn" alt="" />
+                                <img src="https://restaurant.scrollmonkey.com/files/orange-x.png" className="d-none rounded-pill position-absolute close4 close-btn" alt="" />
                             </button>
                         </div>
                     </div>

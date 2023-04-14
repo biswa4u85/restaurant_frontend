@@ -29,7 +29,7 @@ export function Splash() {
                         <NavLink to={users?.auth_key ? "home" : "auth"}><button class="btn btn-primary">{restaurant?.restaurant_name}</button></NavLink>
                     </div>
                     <div className="fixed-bottom text-center p-4">
-                        <img src="http://restaurant.develop.helloapps.io/files/powered by.png" alt="" />
+                        <img src="https://restaurant.scrollmonkey.com/files/powered by.png" alt="" />
                     </div>
                 </div>
             </div>

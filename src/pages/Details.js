@@ -66,7 +66,7 @@ export function Details() {
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div style={{ float: 'right', display: 'flex' }}>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="http://restaurant.develop.helloapps.io/files/veg.png" className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -76,7 +76,7 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="http://restaurant.develop.helloapps.io/files/veg.png" className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -96,24 +96,24 @@ export function Details() {
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             {items.map((item, key) => <div key={key} className="row border-bottom mx-1 my-2 align-items-center">
                                 <div className="col-8 ">
-                                    <img src="http://restaurant.develop.helloapps.io/files/veg.png" className="float-start mt-1" alt="" />
+                                    <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />
                                     <p className="mb-1 fw-bold text-dark display-inline ms-3">Bestseller</p>
                                     <h5 className="my-2  fw-bold">{item.item_name}</h5><br />
                                     <h6 className="my-3  fw-bold">{item.currency} {item.rate}</h6>
                                 </div>
                                 <div className="col-4 food-cart">
-                                    <img src={item.image ? config.imageURL + item.image : "http://restaurant.develop.helloapps.io/files/Rectangle 188 (1).png"} className="img-fluid box_rounded " />
+                                    <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="img-fluid box_rounded " />
                                     {(cart['items'] && cart['items'][item.item_name]) ?
                                         <div className="showme_1 input-group inline-group">
                                             <div className="input-group-prepend">
                                                 <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
-                                                    <img src="http://restaurant.develop.helloapps.io/files/Vector (1).png" className="text-white" alt="" />
+                                                    <img src="https://restaurant.scrollmonkey.com/files/Vector (1).png" className="text-white" alt="" />
                                                 </button>
                                             </div>
                                             <input className="form-control quantity" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
                                             <div className="input-group-append">
                                                 <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(item, 'add')}>
-                                                    <img src="http://restaurant.develop.helloapps.io/files/Vector.png" alt="" />
+                                                    <img src="https://restaurant.scrollmonkey.com/files/Vector.png" alt="" />
                                                 </button>
                                             </div>
                                         </div> : <button className="btn add-btn " data-id="1" onClick={() => updateCart(item, 'add')}>Add</button>}

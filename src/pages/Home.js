@@ -40,7 +40,7 @@ export function Home() {
                     </div>
                     <div className="col float-end text-end profile-img text-right">
                         <NavLink to="/order-summary" className="profile-icon"><i class="fa fa-cart-plus" aria-hidden="true"></i></NavLink>
-                        <NavLink to="/profile" className="profile-icon"><img src="http://restaurant.develop.helloapps.io/files/profile-icon.png" alt="" /></NavLink>
+                        <NavLink to="/profile" className="profile-icon"><img src="https://restaurant.scrollmonkey.com/files/profile-icon.png" alt="" /></NavLink>
                     </div>
                 </div>
             </section>
@@ -53,7 +53,7 @@ export function Home() {
                                     TABLE NO <b>{table}</b>
                                 </div>
                                 <div className="col-3">
-                                    <img src="http://restaurant.develop.helloapps.io/files/refresh.png" alt="" />
+                                    <img src="https://restaurant.scrollmonkey.com/files/refresh.png" alt="" />
                                 </div>
                             </div>
                         </NavLink>
@@ -65,7 +65,7 @@ export function Home() {
                     </NavLink>
                     <div className="col-4">
                         <div className="form-group has-search">
-                            <img src="http://restaurant.develop.helloapps.io/files/search-icon.png" className="form-control-feedback" alt="" />
+                            <img src="https://restaurant.scrollmonkey.com/files/search-icon.png" className="form-control-feedback" alt="" />
                             <input type="text" className="form-control search-input" onChange={(obj) => searchItems(obj.target.value)} placeholder="Search" />
                         </div>
                     </div>
@@ -93,7 +93,7 @@ export function Home() {
                 <section className=" body_rounded position-relative row food-section">
                     {group.map((item, key) => <NavLink key={key} to={`/details?type=${item.name}`} className="col-6 pr-2">
                         <div class="card" style={{ marginBottom: 10 }}>
-                            <img src={item.image ? config.imageURL + item.image : "http://restaurant.develop.helloapps.io/files/Rectangle 188 (2).png"} className="card-img-top" style={{ height: 150 }} />
+                            <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (2).png"} className="card-img-top" style={{ height: 150 }} />
                             <div class="card-body">
                                 <p class="card-title" style={{ left: 0 }}>{item.name}</p>
                             </div>

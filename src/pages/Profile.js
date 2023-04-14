@@ -46,7 +46,7 @@ export function Profile() {
                     {/* <div className="col ">
                         <NavLink to="/home" className="text-orange">
                             <h6 className="float-end fw-bold"> Edit Profile
-                                <img src="http://restaurant.develop.helloapps.io/files/Vector (3).png" alt="" />
+                                <img src="https://restaurant.scrollmonkey.com/files/Vector (3).png" alt="" />
                             </h6>
                         </NavLink>
                     </div> */}

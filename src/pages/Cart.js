@@ -119,7 +119,7 @@ export function Cart() {
                         <div className="col ">
                             <NavLink to="/home">
                                 <h6 className="float-end fw-bolder mt-3 "> {'Pending'}
-                                    <img src="http://restaurant.develop.helloapps.io/files/Vector (3).png" alt="" />
+                                    <img src="https://restaurant.scrollmonkey.com/files/Vector (3).png" alt="" />
                                 </h6>
                             </NavLink>
                         </div>
@@ -130,20 +130,20 @@ export function Cart() {
                         <h6 className="round-no">Item #{Number(k) + 1}</h6>
                         <div className="row mt-3">
                             <div className="col">
-                                <img src="http://restaurant.develop.helloapps.io/files/veg.png" alt="" />
+                                <img src="https://restaurant.scrollmonkey.com/files/veg.png" alt="" />
                                 <h6 className="fw-bolder d-inline food-name"> {menu}</h6>
                             </div>
                             <div className="col">
                                 <div className=" input-group inline-group shadow-sm float-end ">
                                     <div className="input-group-prepend">
                                         <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(cart.items[menu], 'minus')}>
-                                            <img src="http://restaurant.develop.helloapps.io/files/minus-dark.png" className="text-white" alt="" />
+                                            <img src="https://restaurant.scrollmonkey.com/files/minus-dark.png" className="text-white" alt="" />
                                         </button>
                                     </div>
                                     <input className="form-control quantity" value={Number(cart.items[menu].count)} />
                                     <div className="input-group-append">
                                         <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(cart.items[menu], 'add')}>
-                                            <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />
+                                            <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
                                         </button>
                                     </div>
                                 </div>
@@ -165,9 +165,9 @@ export function Cart() {
 
             <section className="border-bottom add-more p-3">
                 <NavLink to="/home">
-                    <img src="http://restaurant.develop.helloapps.io/files/plus-dark.png" alt="" />
+                    <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
                     <p className="d-inline ms-2 text-dark">Add more item(s)</p>
-                    <img src="http://restaurant.develop.helloapps.io/files/Vector (4).png" alt="" className="float-end me-2" />
+                    <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-end me-2" />
                 </NavLink>
             </section>
             <section className="border-bottom cooking-requests p-3">
@@ -176,7 +176,7 @@ export function Cart() {
                 </>
                     :
                     <span onClick={() => setIsnote(true)}>
-                        <img src="http://restaurant.develop.helloapps.io/files/Vector (12).png" alt="" />
+                        <img src="https://restaurant.scrollmonkey.com/files/Vector (12).png" alt="" />
                         <p className="d-inline ms-2 text-dark">Add cooking requests</p>
                     </span>}
             </section>
@@ -220,7 +220,7 @@ export function Cart() {
 
             <footer id="orderSummary" className="d-none text-dark success-box text-center body_rounded fixed-bottom p-3">
                 <h6 className="fw-bold d-inline">Success</h6>
-                <img src="http://restaurant.develop.helloapps.io/files/Vector (5).png" className="float-end me-2 success-close-btn" alt="" />
+                <img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-end me-2 success-close-btn" alt="" />
 
                 <div className="succes-img">
                     <img src="" alt="" />
