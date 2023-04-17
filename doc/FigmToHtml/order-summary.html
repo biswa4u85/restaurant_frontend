@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Askbootstrap">
+        <meta name="author" content="Askbootstrap">
+        <link rel="icon" type="image/png" href="img/logo.png">
+        <title>Zomoto - Food Order Directory, Restaurants, Fast Food, Bars Mobile Template</title>
+        <!-- Bootstrap CSS -->
+        <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  
+        <!-- Fontawesome Icon -->
+        <link href="vendor/icons/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <!-- Slick Slider -->
+        <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
+        <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
+        <!-- Custom css -->
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <!-- Sidebar CSS -->
+        <link href="vendor/sidebar/demo.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
+            <div class="left mr-auto">
+               <a href="cart.html" class="text-dark fw-bold"><i class="btn_detail  mdi mdi-chevron-left "></i>Order Summary</a>
+            </div>
+        </div>
+        <div class="order-details  shadow-sm box_rounded  p-3 m-3 pb-0">
+            <div class="row order-summary">
+                <div class="col-6">
+                    <h6 class="fw-bold">Order #475</h6>
+                </div>
+                <div class="col-6 ">
+                    <div class="row float-end">
+                        <div class="col-7">
+                            <p class="p-0 m-0">TABLE NO.</p>
+                            <p class="fw-bolder text-dark">T1</p>
+                        </div>
+                        <div class="col-5">
+                            <p class="p-0 m-0">GUESTS</p>
+                            <p class="fw-bolder text-dark">1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class=" border-bottom">
+            <div class="rounds m-3 mt-4">
+                <h6 class="round-no">Round #1</h6>
+                <div class="row mt-3">
+                    <div class="col">
+                        <img src="img/veg.png" alt="">
+                        <h6 class="fw-bolder d-inline food-name">1x Chicken Platter Special</h6>
+                    </div>
+                    <div class="col">
+                        <h6 class="fw-bolder float-end">₹350.00</h6>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <h6 class="fw-bolder ms-3">₹350.00</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class=" border-bottom">
+            <div class="rounds m-3 mt-4">
+                <h6 class="round-no">Round #2</h6>
+                <div class="row mt-3">
+                    <div class="col">
+                        <img src="img/veg.png" alt="">
+                        <h6 class="fw-bolder d-inline food-name">1x Bhunna Paneer Tikka</h6>
+                    </div>
+                    <div class="col">
+                        <h6 class="fw-bolder float-end">₹300.00</h6>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <h6 class="fw-bolder ms-3">₹300.00</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="border-bottom add-more p-3">
+            <a href ="home1.html" >
+                <img src="img/plus-dark.png" alt="">
+                <p class="d-inline ms-2 text-dark">Order more item(s)</p>
+
+                <img src="img/Vector (4).png" alt="" class="float-end me-2">
+            </a>
+        </section>
+        <section class=" border-bottom">
+            <div class="add-tip m-3 mt-4">
+                <h6 class="tip ">Add Tip (Optional)</h6>
+                <div class="row">
+                    <div class="col-3 position-relative">
+                        <button class="btn border pe-4 fw-bold tip-btn"  id="1" >
+                            ₹20 
+                            <img src="img/orange-x.png" class="d-none rounded-pill position-absolute close1 close-btn" alt="">
+                        </button>
+                        
+                    </div>
+                    <div class="col-3 position-relative">
+                        <button class="btn border pe-4 fw-bold tip-btn" id="2">
+                            ₹30
+                            <img src="img/orange-x.png" class="d-none rounded-pill position-absolute close2 close-btn" alt="">
+                        </button>
+                    </div>
+                    <div class="col-3 position-relative ">
+                        <button class="btn border pe-4 fw-bold tip-btn " id="3">
+                            ₹50
+                            <img src="img/orange-x.png" class="d-none rounded-pill position-absolute close3 close-btn" alt="">
+                        </button>
+                    </div>
+                    <div class="col-3 position-relative ">
+                        <button class="btn border pe-4 fw-bold tip-btn" id="4">
+                            Other
+                            <img src="img/orange-x.png" class="d-none rounded-pill position-absolute close4 close-btn" alt="">
+                        </button>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </section>
+        <section class="rounds border-bottom">
+            <div class="round-no m-3 mt-4">
+                <h6 class="round-no ">Promo-code</h6>
+                <input type="search" class="form-control fw-bold" value="FLAT-20" name="Promo-code">
+                <style>
+                    [type="search"]::-webkit-search-cancel-button {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    height: 20px;
+                    width: 20%;
+                    background-image: url(img/bg-remove.png);
+                    background-size: 100% 20px;
+                    }
+                </style>
+            </div>
+        </section>
+        <div class="place-order  p-3 m-3 mb-5 shadow-sm ">
+            <div class="row mt-4">
+                <div class="col">
+                    <h6 class="fw-bolder">SUB TOTAL</h6>
+                </div>
+                <div class="col">
+                    <h6 class="fw-bolder float-end">₹650.00</h6>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <h6 class="fw-bolder">TAXES</h6>
+                </div>
+                <div class="col">
+                    <h6 class="fw-bolder float-end">₹20.00</h6>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <h6 class="fw-bolder">TIP</h6>
+                </div>
+                <div class="col">
+                    <h6 class="fw-bolder float-end">₹20.00</h6>
+                </div>
+            </div>
+            <div class="row border-bottom pb-3 mt-2">
+                <div class="col">
+                    <h6 class="fw-bolder text-orange">COUPON</h6>
+                </div>
+                <div class="col">
+                    <h6 class="fw-bolder float-end text-orange">-₹20.00</h6>
+                </div>
+            </div>
+            <div class="row pb-3 mt-3">
+                <div class="col">
+                    <h4 class="fw-bolder">TOTAL</h4>
+                </div>
+                <div class="col">
+                    <h4 class="fw-bolder float-end">₹670.00</h6>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <a href="payment-success.html" class="btn save-btn place-order-btn btn-block box_rounded w-100 py-3 fw-100">Finished Dining? <b>Pay Bill</b></a>
+            </div>
+        </div>
+
+
+
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+         <!-- Bootstrap Bundle -->
+        <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- slick Slider JS-->
+        <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/custom.js"></script>
+
+        <script>
+      
+            $('.tip-btn').click(function(){
+                var id =$(this).attr('id');
+                $('.close-btn').addClass('d-none');
+                $('.close'+id).removeClass('d-none');
+
+            });
+
+        </script>
+    </body>
+</html>
