@@ -76,7 +76,7 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5 }} src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 15 }} src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -107,13 +107,13 @@ export function Details() {
                                         <div className="showme_1 input-group inline-group">
                                             <div className="input-group-prepend">
                                                 <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
-                                                    <img src="https://restaurant.scrollmonkey.com/files/Vector (1).png" className="text-white" alt="" />
+                                                    -
                                                 </button>
                                             </div>
                                             <input className="form-control quantity" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
                                             <div className="input-group-append">
                                                 <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(item, 'add')}>
-                                                    <img src="https://restaurant.scrollmonkey.com/files/Vector.png" alt="" />
+                                                    +
                                                 </button>
                                             </div>
                                         </div> : <button className="btn add-btn " data-id="1" onClick={() => updateCart(item, 'add')}>Add</button>}

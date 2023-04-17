@@ -658,6 +658,7 @@ a.slick-slide {
     -webkit-transform: translate(-50%, -50%);
     /* Chrome, Safari, Opera */
 }
+
 .osahan-index .logo-center button {
     position: absolute;
     top: 60%;
@@ -694,8 +695,8 @@ a.slick-slide {
 }
 
 .save-btn {
-    background-color: var(--orange)!important;
-    color: var(--white)!important;
+    background-color: var(--orange) !important;
+    color: var(--white) !important;
     font-weight: bold;
 }
 
@@ -971,7 +972,7 @@ a.slick-slide {
     color: var(--orange);
 }
 
-.takeout-btn{
+.takeout-btn {
     height: auto;
 }
 
@@ -998,12 +999,18 @@ a.slick-slide {
     }
 
 }
+
 .web-footer,
-.navbar.navbar-expand-lg{
-    display: none!important;
+.navbar.navbar-expand-lg {
+    display: none !important;
 }
-.profile-icon i{
+
+.profile-icon i {
     font-size: 25px;
     vertical-align: middle;
-    margin-right:10px;
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none !important;
 }

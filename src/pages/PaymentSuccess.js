@@ -45,24 +45,24 @@ export function PaymentSuccess() {
             </div>
             <div className="container dine-in my-5">
                 <div className="main-logo text-center">
-                    <img src={config.imageURL + restaurant.restaurant_logo} style={{ width: "75%" }} alt="" />
+                    <img src={config.imageURL + restaurant?.restaurant_logo} style={{ width: "75%" }} alt="" />
                 </div>
                 <div className="heading-text text-center mt-4">
                     <h3 className="fw-bolder">{data.ending_message}</h3>
                     <p>We hope you come back soon! We’d love to hear feedback on your experience. </p>
                 </div>
                 <section>
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        {data?.thank_you_banners && ((data.thank_you_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
-                            <NavLink key={key} to="/">
-                                <img src={config.imageURL + item.image} width="100%" height="350" className="logo-over" alt="logo" />
-                            </NavLink>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {data?.thank_you_banners && ((data.thank_you_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
+                                <NavLink key={key} to="/">
+                                    <img src={config.imageURL + item.image} width="100%" height="350" className="logo-over" alt="logo" />
+                                </NavLink>
+                            </div>
+                            ))}
                         </div>
-                        ))}
                     </div>
-                </div>
-            </section>
+                </section>
                 <div className="container">
                     <div className="row mt-5 check-buttons">
                         {data?.review_links ? data.review_links.map((item, key) => <a key={key} target="_blank" href={item.review_link} className="btn form-control text-center py-3">
