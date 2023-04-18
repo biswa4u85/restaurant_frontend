@@ -40,9 +40,16 @@ export function OrderSummary() {
 
     };
 
-    const placeOrder = () => {
-        let element = document.getElementById('orderSummary')
-        element.classList.remove('d-none')
+    const placePayment = async () => {
+        if (orders && orders[0] && orders[0].order_id) {
+            let payment = await apiPostCall(`de_restaurant_backend.api.v_0_1.payment.checkout`, { token: `Basic ${users.auth_key}`, order_id: orders[0]?.order_id })
+            if (payment.status_code == 200) {
+                toast.success(payment.message)
+                navigate('/payment-success')
+            } else {
+                toast.error(payment.message)
+            }
+        }
     }
 
     return (
@@ -177,7 +184,7 @@ export function OrderSummary() {
                 </div>
 
                 <div className="mt-2">
-                    <NavLink to="/payment-success" className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3 fw-100">Finished Dining? <b>Pay Bill</b></NavLink>
+                    <div onClick={() => placePayment()} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3 fw-100">Finished Dining? <b>Pay Bill</b></div>
                 </div>
             </div>
         </>
