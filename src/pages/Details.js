@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import config from "../common/config";
-import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { apiGetCall } from "../services/frappe-apis";
 import nonVegImg from '../assets/images/nonveg.png'
 
@@ -13,7 +13,7 @@ export function Details() {
     const { restaurant, cart, setCart } = useContext(AuthModeContext);
     const [items, setitems] = useState([])
     const [itemType, setIemType] = useState('')
-    
+
     useEffect(() => {
         getData()
     }, [itemType])
@@ -77,7 +77,6 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        // src="https://restaurant.scrollmonkey.com/files/nonveg.png" 
                         <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src={nonVegImg} className="float-start" alt="" />
                         <input
                             type="radio"
@@ -89,7 +88,7 @@ export function Details() {
                     </div>
                 </div>
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>{restaurant.restaurant_name}</NavLink>
+                    <NavLink to="/home" className="text-dark fw-bold"><i className="btn_detail fa fa-chevron-left"></i>{type}</NavLink>
                 </div>
             </div>
             <div className="mb-5">
@@ -102,14 +101,15 @@ export function Details() {
                                         <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />
                                         {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3 mt-1">Bestseller</p>}
                                     </div>
-                                    <p className="mb-1 fw-bold text-dark display-inline ms-3">Bestseller</p>
                                     <h5 className="my-2  fw-bold">{item.item_name}</h5><br />
-                                    <h6 className="my-3  fw-bold">{item.currency} {item.rate}</h6>
+                                    <h6 className="mb-3  fw-bold">{item.currency} {item.rate}</h6>
                                 </div>
                                 <div className="col-4 food-cart">
-                                    <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="img-fluid box_rounded " />
+                                    <div class="ratio ratio-1x1">
+                                        <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" />
+                                    </div>
                                     {(cart['items'] && cart['items'][item.item_name]) ?
-                                        <div className="showme_1 input-group inline-group">
+                                        <div className="showme_1 input-group inline-group mx-auto">
                                             <div className="input-group-prepend">
                                                 <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
                                                     -
@@ -121,7 +121,7 @@ export function Details() {
                                                     +
                                                 </button>
                                             </div>
-                                        </div> : <button className="btn add-btn " data-id="1" onClick={() => updateCart(item, 'add')}>Add</button>}
+                                        </div> : <button className="btn add-btn mx-auto  " data-id="1" onClick={() => updateCart(item, 'add')}>Add</button>}
                                 </div>
                             </div>)}
 

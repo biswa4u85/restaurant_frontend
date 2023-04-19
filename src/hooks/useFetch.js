@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import config from "../common/config";
-const baseURL = process.env.REACT_APP_ENV == 'dev' ? config.apiURL : ''
+const baseURL = config.apiURL
 
 function getUrl(relative) {
     const urlExpression = "https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)";
@@ -33,7 +33,7 @@ export function useFetch({ method, data, start }) {
         setLoading(true);
 
         let headers = {}
-        if (process.env.REACT_APP_ENV == 'dev') {
+        if (true) {
             headers.Authorization = config.token
         } else {
             headers['X-Frappe-CSRF-Token'] = token

@@ -767,6 +767,10 @@ a.slick-slide {
     font-size: 15px;
 }
 
+.carousel-inner.rounded {
+    border-radius: 20px !important;
+}
+
 .food-cart {
     position: relative;
 }
@@ -784,6 +788,59 @@ a.slick-slide {
     padding: 4px;
 }
 
+.food-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+    padding-left: 9px;
+}
+
+.home-title {
+    padding: 17px 0 10px 4px !important;
+}
+
+.home-title h6 {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.food-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: black;
+}
+
+.food-card .card-body {
+    display: flex;
+    justify-content: center;
+}
+
+.food-card .card-body .food-title {
+    text-align: center;
+    margin: auto;
+}
+
+.food-card .card {
+    border: 0;
+}
+
+.food-card {
+    width: calc(50% - 10px);
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+    .food-card {
+        width: calc(33.33% - 10px);
+    }
+}
+
+@media (min-width: 800px) {
+    .food-card {
+        width: calc(25% - 10px);
+    }
+}
 
 .food-cart .input-group {
     background: var(--dark);

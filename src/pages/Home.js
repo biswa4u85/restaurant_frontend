@@ -75,10 +75,10 @@ export function Home() {
             <section className="featured">
                 <section>
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner rounded">
                             {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
                                 <NavLink key={key} to="/">
-                                    <img src={config.imageURL + item.image} width="100%" height="350" className="logo-over" alt="logo" />
+                                    <img src={config.imageURL + item.image} width="100%" height="200px" className="logo-over" alt="logo" />
                                 </NavLink>
                             </div>
                             ))}
@@ -87,19 +87,22 @@ export function Home() {
                 </section>
             </section>
             <div className="px-3">
-                <div className="title mb-3 d-flex align-items-center">
-                    <h4 className="mb-0 fw-bold">What would you like to order?</h4>
+                <div className="title mb-3 d-flex align-items-center pt-1 home-title">
+                    <h6 className="mb-0">What would you like to order?</h6>
                 </div>
-                <section className=" body_rounded position-relative row food-section">
-                    {group.map((item, key) => <NavLink key={key} to={`/details?type=${item.name}`} className="col-6 pr-2">
-                        <div class="card" style={{ marginBottom: 10 }}>
-                            <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (2).png"} className="card-img-top" style={{ height: 150 }} />
-                            <div class="card-body">
-                                <p class="card-title" style={{ left: 0 }}>{item.name}</p>
-                            </div>
-                        </div>
-                    </NavLink>)}
-                </section>
+                <div className="w-100">
+                    <section className="body_rounded position-relative  food-section food-cards">
+                        {group.map((item, key) =>
+                            item.name !== "All Item Groups" && <NavLink key={key} to={`/details?type=${item.name}`} className="pr-2 food-card">
+                                <div class="card" style={{ marginBottom: 10 }}>
+                                    <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (2).png"} className="card-img-top" style={{ height: 150 }} />
+                                    <div class="card-body p-2">
+                                        <div class="card-title food-title" style={{ left: 0 }}>{item.name}</div>
+                                    </div>
+                                </div>
+                            </NavLink>)}
+                    </section>
+                </div>
             </div>
         </div>
     );

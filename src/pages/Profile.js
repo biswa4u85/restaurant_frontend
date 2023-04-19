@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import moment from 'moment';
 import { apiGetCall } from "../services/frappe-apis";
 
 export function Profile() {
@@ -61,7 +62,7 @@ export function Profile() {
             {orders.map((item, key) => <div key={key} className="border-bottom">
                 <NavLink to="/home" className="row mt-3 m-2 text-dark" href="#">
                     <div className="col-9">
-                        <p>{item.order_id}-({item.table_no}), 4 Feb 2023</p>
+                        <p>{item.order_id}-({item.table_no}), {moment(item.posting_date).format('DD MMM YYYY')}</p>
                         {(item.menu).map((menu, k) => <p key={k} className="fw-bolder food-name">{menu.item_name}-({menu.qty})  ₹{menu.rate}</p>)}
                     </div>
                     <div className="col-3">

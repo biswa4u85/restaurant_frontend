@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const axiosAPI = axios.create({
-  baseURL: process.env.REACT_APP_ENV == 'dev' ? config.apiURL : '',
+  baseURL: config.apiURL,
   headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 });
 

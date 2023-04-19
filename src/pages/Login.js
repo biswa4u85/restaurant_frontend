@@ -44,7 +44,7 @@ export function Login() {
                     <p className="mb-5 varification-p">A Whole New Way To Indulge</p>
                     <p className="text-divider varification-p">Log in</p>
                     <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" novalidate>
-                        <input className="form-control  p-3 box_rounded mb-3 " type="text" placeholder="Your Username" {...register("username", { required: true })} required />
+                        <input className="form-control  p-3 box_rounded mb-3 " type="text" placeholder="Your Email or Phone no." {...register("username", { required: true })} required />
                         <input className="form-control  p-3 box_rounded mb-3 " type="password" placeholder="Your Password" {...register("password", { required: true })} required />
                         <div style={{ float: 'right' }}><NavLink to="/signUp">Sign up</NavLink></div>
                         {/* <div style={{ float: 'left' }}><NavLink to="/forgot-password">Forgot Password</NavLink></div> */}
