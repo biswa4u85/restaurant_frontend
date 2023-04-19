@@ -3,6 +3,7 @@ import { AuthModeContext } from "../contexts";
 import config from "../common/config";
 import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { apiGetCall } from "../services/frappe-apis";
+import nonVegImg from '../assets/images/nonveg.png'
 
 export function Details() {
     let navigate = useNavigate();
@@ -13,8 +14,6 @@ export function Details() {
     const [items, setitems] = useState([])
     const [itemType, setIemType] = useState('')
     
-    console.log('>>', 'test console');
-
     useEffect(() => {
         getData()
     }, [itemType])
@@ -78,7 +77,8 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 15 }} src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start" alt="" />
+                        // src="https://restaurant.scrollmonkey.com/files/nonveg.png" 
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src={nonVegImg} className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -98,7 +98,10 @@ export function Details() {
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             {items.map((item, key) => <div key={key} className="row border-bottom mx-1 my-2 align-items-center">
                                 <div className="col-8 ">
-                                    <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />
+                                    <div className="d-flex flex-row align-items-center">
+                                        <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />
+                                        {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3 mt-1">Bestseller</p>}
+                                    </div>
                                     <p className="mb-1 fw-bold text-dark display-inline ms-3">Bestseller</p>
                                     <h5 className="my-2  fw-bold">{item.item_name}</h5><br />
                                     <h6 className="my-3  fw-bold">{item.currency} {item.rate}</h6>
@@ -127,7 +130,7 @@ export function Details() {
                 </section>
             </div>
             {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
-                <div className="row mb-3 ms-2 align-items-center">
+                <div className="row mb-3 ms-2 d-flex align-items-center">
                     <div className="col float-start ">
                         <p className=" mt-3  mb-1">{cart.total} {cart.total < 2 ? 'ITEM' : 'ITEMS'}</p>
                         <h4 className=" mt-0  float-left d-inline">₹{cart.price}</h4>
