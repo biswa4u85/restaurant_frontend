@@ -12,6 +12,8 @@ export function Details() {
     const { restaurant, cart, setCart } = useContext(AuthModeContext);
     const [items, setitems] = useState([])
     const [itemType, setIemType] = useState('')
+    
+    console.log('>>', 'test console');
 
     useEffect(() => {
         getData()
