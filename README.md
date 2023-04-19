@@ -24,6 +24,17 @@ npm build
 
 ### `Copy Pest File`
 
-in upload folder
+From Upload folder, copy all files
 
-copy all files, and pest in ERP
+IN web-page, create a page
+
+1) copy-pest main.html
+
+2) copy-pest main.css
+
+3) copy-pest main.js
+
+
+IN upload section, upload the files as public
+
+3) copy-pest all files
