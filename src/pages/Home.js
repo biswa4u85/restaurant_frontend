@@ -49,12 +49,12 @@ export function Home() {
                     <div className="col-4">
                         <NavLink to="/table" className="text-dark">
                             <div className="row">
-                                <div className="col-9 me-0 pe-0">
+                                <div className="col-9 me-0 pe-0 mt-1" style={{ fontSize: '10px' }}>
                                     TABLE NO <b>{table}</b>
                                 </div>
-                                <div className="col-3">
+                                {/* <div className="col-3">
                                     <img src="https://restaurant.scrollmonkey.com/files/refresh.png" alt="" />
-                                </div>
+                                </div> */}
                             </div>
                         </NavLink>
                     </div>
@@ -76,7 +76,7 @@ export function Home() {
                 <section>
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner rounded">
-                            {restaurant?.signup_banners && ((restaurant.signup_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
+                            {restaurant?.menu_banners && ((restaurant.menu_banners).map((item, key) => <div class={"carousel-item " + (key == 0 ? 'active' : '')}>
                                 <NavLink key={key} to="/">
                                     <img src={config.imageURL + item.image} width="100%" height="200px" className="logo-over" alt="logo" />
                                 </NavLink>
@@ -88,7 +88,12 @@ export function Home() {
             </section>
             <div className="px-3">
                 <div className="title mb-3 d-flex align-items-center pt-1 home-title">
-                    <h6 className="mb-0">What would you like to order?</h6>
+                    <h6 className="mb-0" style={{
+                        position: 'relative',
+                        left: '50%',
+                        translate: 'transform',
+                        transform: 'translateX(-50%)',
+                    }}>What would you like to order?</h6>
                 </div>
                 <div className="w-100">
                     <section className="body_rounded position-relative  food-section food-cards">

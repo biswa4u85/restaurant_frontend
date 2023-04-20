@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthModeContext } from "../contexts";
 import { toast } from 'react-toastify';
-import { loginApi } from "../services/frappe-apis";
+import { apiGetCall, loginApi } from "../services/frappe-apis";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,20 @@ import config from "../common/config";
 export function Login() {
     let navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { table, restaurant, setUsers } = useContext(AuthModeContext);
+    const { table, restaurant, setUsers, users, setRestaurant } = useContext(AuthModeContext);
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const getData = async () => {
+        let groups = await apiGetCall(`de_restaurant_backend.api.v_0_1.restaurant.restaurant_info`, {})
+        if (groups.status != 'error') {
+            setRestaurant(groups);
+        }
+    };
+
+
     const onSubmit = async (data) => {
         let user = await loginApi(`de_restaurant_backend.api.v_0_1.login.login`, data)
         if (user.status == 'error') {

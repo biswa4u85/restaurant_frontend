@@ -734,7 +734,7 @@ a.slick-slide {
 .menu-items .has-search .form-control-feedback {
     position: absolute;
     z-index: 2;
-    top: 88px;
+    top: 7px;
     display: block;
     right: 16px;
     width: 1.2rem;
