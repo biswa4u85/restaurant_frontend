@@ -788,6 +788,11 @@ a.slick-slide {
     padding: 4px;
 }
 
+
+.food-cart .add-btn.add-btn.details-add-btn {
+    left: unset;
+}
+
 .food-cards {
     display: flex;
     flex-wrap: wrap;
@@ -828,6 +833,12 @@ a.slick-slide {
 
 .food-card {
     width: calc(50% - 10px);
+}
+
+.element-center {
+    position: relative;
+    left: 50% !important;
+    transform: translateX(-50%);
 }
 
 @media (min-width: 600px) and (max-width: 800px) {
