@@ -98,7 +98,7 @@ export function Details() {
                 <section className=" position-relative py-3 pl-3">
                     <div className=" tab-content pr-3" id="pills-tabContent">
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start">
+                            {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative', left: '-10px' }}>
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-100 flex-row align-items-start h-25">
                                         {/* TO DO: w-75 */}
