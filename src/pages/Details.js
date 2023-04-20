@@ -66,7 +66,9 @@ export function Details() {
     return (
         <div className="bg-white">
             <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
-                <div style={{ float: 'right', display: 'flex', marginTop: '7px' }}>
+                <div style={{
+                    float: 'right', display: 'flex', marginTop: '7px', position: 'relative', left: '-20px'
+                }}>
                     <div style={{ padding: '0 10px' }}>
                         <img style={{ verticalAlign: 'baseline', marginRight: 5, }} src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start" alt="" />
                         <input
