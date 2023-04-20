@@ -4,7 +4,6 @@ import config from "../common/config";
 import { NavLink, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { apiGetCall } from "../services/frappe-apis";
 import nonVegImg from '../assets/images/nonveg.png'
-import { itemTypes } from "../common/consts";
 
 export function Details() {
     let navigate = useNavigate();
@@ -78,7 +77,7 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src={nonVegImg} className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -96,33 +95,33 @@ export function Details() {
                 <section className=" position-relative py-3 pl-3">
                     <div className=" tab-content pr-3" id="pills-tabContent">
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start">
-                                <div className="h-100 flex-grow-1">
-                                    <div className="d-flex w-75 flex-row align-items-start h-25">
-                                        {item.item_type === itemTypes.veg ? <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" /> : <img src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start mt-1" alt="" />}
-                                        {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3">Bestseller</p>}
+                            {items.map((item, key) => <div key={key} className="row border-bottom mx-1 my-2 align-items-center">
+                                <div className="col-8 ">
+                                    <div className="d-flex flex-row align-items-center">
+                                        <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />
+                                        {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3 mt-1">Bestseller</p>}
                                     </div>
-                                    <h5 className="my-2  fw-bold h-50">{item.item_name}</h5><br />
-                                    <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6>
+                                    <h5 className="my-2  fw-bold">{item.item_name}</h5><br />
+                                    <h6 className="mb-3  fw-bold">{item.currency} {item.rate}</h6>
                                 </div>
-                                <div className="food-cart h-100 w-25">
-                                    <div class="ratio ratio-1x1 w-100">
-                                        <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" style={{ height: '100px' }} />
-                                        {(cart['items'] && cart['items'][item.item_name]) ?
-                                            <div className="showme_1 input-group inline-group w-75 element-center" >
-                                                <div className="input-group-prepend">
-                                                    <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
-                                                        -
-                                                    </button>
-                                                </div>
-                                                <input className="form-control quantity" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
-                                                <div className="input-group-append">
-                                                    <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(item, 'add')}>
-                                                        +
-                                                    </button>
-                                                </div>
-                                            </div> : <div className="w-100 d-flex justify-content-center element-center"><button className="btn add-btn details-add-btn" style={{ width: '60%' }} data-id="1" onClick={() => updateCart(item, 'add')}>Add</button></div>}
+                                <div className="col-4 food-cart">
+                                    <div class="ratio ratio-1x1">
+                                        <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" />
                                     </div>
+                                    {(cart['items'] && cart['items'][item.item_name]) ?
+                                        <div className="showme_1 input-group inline-group mx-auto">
+                                            <div className="input-group-prepend">
+                                                <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
+                                                    -
+                                                </button>
+                                            </div>
+                                            <input className="form-control quantity" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
+                                            <div className="input-group-append">
+                                                <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(item, 'add')}>
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div> : <button className="btn add-btn mx-auto  " data-id="1" onClick={() => updateCart(item, 'add')}>Add</button>}
                                 </div>
                             </div>)}
 
