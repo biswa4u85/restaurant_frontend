@@ -99,7 +99,7 @@ export function Details() {
                             {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start">
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-75 flex-row align-items-start h-25">
-                                        {item.item_type === itemTypes.veg ? <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" /> : <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />}
+                                        {item.item_type === itemTypes.veg ? <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" /> : <img src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start mt-1" alt="" />}
                                         {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3">Bestseller</p>}
                                     </div>
                                     <h5 className="my-2  fw-bold h-50">{item.item_name}</h5><br />
