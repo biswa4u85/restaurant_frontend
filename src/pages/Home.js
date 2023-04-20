@@ -101,7 +101,7 @@ export function Home() {
                                     </div>
                                 </div>
                             </NavLink>)}
-                    </section>
+                    </section>x``
                 </div>
             </div>
         </div>

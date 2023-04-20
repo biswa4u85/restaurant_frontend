@@ -4,6 +4,7 @@ import config from "../common/config";
 import { NavLink, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { apiGetCall } from "../services/frappe-apis";
 import nonVegImg from '../assets/images/nonveg.png'
+import { itemTypes } from "../common/consts";
 
 export function Details() {
     let navigate = useNavigate();
@@ -77,7 +78,7 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src={nonVegImg} className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -95,14 +96,14 @@ export function Details() {
                 <section className=" position-relative py-3 pl-3">
                     <div className=" tab-content pr-3" id="pills-tabContent">
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 my-2 align-items-start">
+                            {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start">
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-75 flex-row align-items-start h-25">
-                                        <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />
-                                        {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3 mt-1">Bestseller</p>}
+                                        {item.item_type === itemTypes.veg ? <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" /> : <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" />}
+                                        {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3">Bestseller</p>}
                                     </div>
                                     <h5 className="my-2  fw-bold h-50">{item.item_name}</h5><br />
-                                    <h6 className="mb-3  fw-bold h-25">{item.currency} {item.rate}</h6>
+                                    <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6>
                                 </div>
                                 <div className="food-cart h-100 w-25">
                                     <div class="ratio ratio-1x1 w-100">
