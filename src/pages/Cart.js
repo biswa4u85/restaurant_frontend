@@ -129,11 +129,11 @@ export function Cart() {
                     <div className="rounds m-3 mt-4">
                         <h6 className="round-no">Item #{Number(k) + 1}</h6>
                         <div className="row mt-3">
-                            <div className="col">
+                            <div className="col-8">
                                 <img src="https://restaurant.scrollmonkey.com/files/veg.png" alt="" />
                                 <h6 className="fw-bolder d-inline food-name"> {menu}</h6>
                             </div>
-                            <div className="col">
+                            <div className="col-4">
                                 <div className=" input-group inline-group shadow-sm float-end ">
                                     <div className="input-group-prepend">
                                         <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(cart.items[menu], 'minus')}>
@@ -150,10 +150,10 @@ export function Cart() {
                             </div>
                         </div>
                         <div className="row mt-2">
-                            <div className="col">
+                            <div className="col-8">
                                 <h6 className="fw-bolder ms-3">₹{cart.items[menu].rate}</h6>
                             </div>
-                            <div className="col">
+                            <div className="col-4">
                                 <h6 className="fw-bolder float-end">₹{Number(cart.items[menu].rate) * Number(cart.items[menu].count)}</h6>
                             </div>
                         </div>
@@ -198,10 +198,10 @@ export function Cart() {
                     </div>
                 </div> */}
                 <div className="row pb-3 mt-3">
-                    <div className="col">
+                    <div className="col-8">
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <h4 className="fw-bolder float-end">₹{cart?.price}</h4>
                     </div>
                 </div>
@@ -209,10 +209,10 @@ export function Cart() {
                     <button onClick={() => placeOrder()} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3">Place Order</button>
                 </div>
                 <div className="row mt-4">
-                    <div className="col">
+                    <div className="col-8">
                         <p className="fw-bolder">TOTAL COUNT</p>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <p className="fw-bolder float-end">{cart?.total}</p>
                     </div>
                 </div>

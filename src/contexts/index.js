@@ -11,6 +11,7 @@ export const AuthModeContextProvider = ({
   const [users, setUsers] = useLocalStorage("users", null);
   const [restaurant, setRestaurant] = useLocalStorage("restaurant", null);
   const [cart, setCart] = useLocalStorage("cart", {});
+  const [itemType, setItemType] = useLocalStorage("itemType", []);
   const [table, setTable] = useLocalStorage("table", null);
   const [deliveryType, setDeliveryType] = useLocalStorage("deliveryType", "Dine-In");
   const [group, setGroup] = useLocalStorage("group", []);
@@ -20,6 +21,7 @@ export const AuthModeContextProvider = ({
         users, setUsers,
         restaurant, setRestaurant,
         table, setTable,
+        itemType, setItemType,
         deliveryType, setDeliveryType,
         group, setGroup,
         cart, setCart

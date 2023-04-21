@@ -11,18 +11,31 @@ export function Details() {
     const [searchParams] = useSearchParams();
     const search = searchParams.get('search');
     const type = searchParams.get('type');
-    const { restaurant, cart, setCart } = useContext(AuthModeContext);
-    const [items, setitems] = useState([])
-    const [itemType, setIemType] = useState('')
+    const { restaurant, cart, setCart, itemType: itemCategory, setItemType } = useContext(AuthModeContext);
+    const [items, setitems] = useState([]);
+    const [itemType, setIemType] = useState('');
+    const [noItems, setNoItems] = useState(false);
 
     useEffect(() => {
-        getData()
-    }, [itemType])
+        getData();
+        getItemTypes();
+    }, [itemType]);
 
     const getData = async () => {
         let menus = await apiGetCall(`de_restaurant_backend.api.v_0_1.menu.search?start=0&query=${search ? search : ''}&item_group=${type ? type : ''}&item_type=${itemType ? itemType : ''}`, {})
         if (menus.status != 'error') {
-            setitems(menus.menu)
+            const zeroItems = menus.menu === 'No items found';
+            if (zeroItems) {
+                setNoItems(true);
+            } else { setNoItems(false); }
+            setitems(zeroItems ? [] : menus.menu);
+        }
+    };
+
+    const getItemTypes = async () => {
+        let itemTypeResponse = await apiGetCall(`de_restaurant_backend.api.v_0_1.menu.get_item_type`, {})
+        if (itemTypeResponse?.data.status_code === 200) {
+            setIemType(itemTypeResponse.data.item_type);
         }
     };
 
@@ -70,7 +83,7 @@ export function Details() {
                     float: 'right', display: 'flex', marginTop: '7px', position: 'relative', left: '-20px'
                 }}>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5, }} src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5, }} src={(itemCategory && itemCategory[itemTypes.veg]) || "https://restaurant.scrollmonkey.com/files/veg.png"} className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -80,7 +93,7 @@ export function Details() {
                         />
                     </div>
                     <div style={{ padding: '0 10px' }}>
-                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: 12, height: 12 }} src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start" alt="" />
+                        <img style={{ verticalAlign: 'baseline', marginRight: 5, width: '12px', height: '14px' }} src={(itemCategory && itemCategory[itemTypes.nonveg]) || "https://restaurant.scrollmonkey.com/files/Non Veg.png"} className="float-start" alt="" />
                         <input
                             type="radio"
                             name="site_name"
@@ -98,16 +111,18 @@ export function Details() {
                 <section className=" position-relative py-3 pl-3">
                     <div className=" tab-content pr-3" id="pills-tabContent">
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            {items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative', left: '-10px' }}>
+                            {items.length > 0 && items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative', left: '-10px' }}>
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-100 flex-row align-items-start h-25">
                                         {/* TO DO: w-75 */}
-                                        {item.item_type === itemTypes.veg ? <img src="https://restaurant.scrollmonkey.com/files/veg.png" className="float-start mt-1" alt="" /> : <img src="https://restaurant.scrollmonkey.com/files/nonveg.png" className="float-start mt-1" alt="" />}
-                                        {key === 0 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Bestseller</p>}
-                                        {key === 1 && <p className="mb-1  ml-2 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Chefs Favorite</p>}
+                                        {item.item_type === itemTypes.veg ? <img src={(itemCategory && itemCategory[itemTypes.veg]) || "https://restaurant.scrollmonkey.com/files/veg.png"} className="float-start mt-1" alt="" /> : <img style={{ verticalAlign: 'baseline', width: 13, height: 14 }} src={(itemCategory && itemCategory[itemTypes.nonveg]) || "https://restaurant.scrollmonkey.com/files/Non Veg.png"} className="float-start mt-1" alt="" />}
+                                        {key === 0 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Bestseller</p>}
+                                        {key === 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Chefs Favorite</p>}
+                                        {key > 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3" style={{ fontSize: '14px' }}>{item.item_name}</p>}
                                     </div>
-                                    <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px' }}>{item.item_name}</h5><br />
-                                    <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6>
+                                    <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px', visibility: key > 1 ? 'hidden' : 'unset' }}>{item.item_name}</h5><br />
+                                    {/* <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6> TO DO: revert later once be changes for currency are done */}
+                                    <h6 className="mt-3  fw-bold h-25">₹ {item.rate}</h6>
                                 </div>
                                 <div className="food-cart h-100 w-25">
                                     <div class="ratio ratio-1x1 w-100">
@@ -129,7 +144,14 @@ export function Details() {
                                     </div>
                                 </div>
                             </div>)}
-
+                            {/* <div style={{ minHeight: '800px' }}> */}
+                            {noItems && items.length === 0 && <h6 className="mb-0 my-4 ml-4" style={{
+                                position: 'absolute',
+                                // left: '50%',
+                                // translate: 'transform',
+                                // transform: 'translateX(-50%)',
+                            }}>No Items to display!</h6>}
+                            {/* </div> */}
                         </div>
                     </div>
                 </section>
