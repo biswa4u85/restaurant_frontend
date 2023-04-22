@@ -97,30 +97,32 @@ export function Details() {
                         <input
                             type="radio"
                             name="site_name"
-                            value={'NONVEG'}
-                            checked={itemType === 'NONVEG'}
-                            onChange={() => setIemType('NONVEG')}
+                            value={'Non-veg'}
+                            checked={itemType === 'Non-veg'}
+                            onChange={() => setIemType('Non-veg')}
                         />
                     </div>
                 </div>
                 <div className="left mr-auto">
-                    <NavLink to="/home" className="text-dark fw-bold" style={{ fontSize: '16px', lineHeight: '20px' }}><i className="btn_detail fa fa-chevron-left"></i>{type}</NavLink>
+                    <NavLink to="/home" className="item-group-fonts-1"><i className="btn_detail fa fa-chevron-left"></i>{type}</NavLink>
                 </div>
             </div>
             <div className="mb-5">
                 <section className=" position-relative py-3 pl-3">
                     <div className=" tab-content pr-3" id="pills-tabContent">
                         <div className="tab-pane fade show active " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            {items.length > 0 && items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative', left: '-10px' }}>
+                            {items.length > 0 && items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative' }}>
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-100 flex-row align-items-start h-25">
                                         {/* TO DO: w-75 */}
                                         {item.item_type === itemTypes.veg ? <img src={(itemCategory && itemCategory[itemTypes.veg]) || "https://restaurant.scrollmonkey.com/files/veg.png"} className="float-start mt-1" alt="" /> : <img style={{ verticalAlign: 'baseline', width: 13, height: 14 }} src={(itemCategory && itemCategory[itemTypes.nonveg]) || "https://restaurant.scrollmonkey.com/files/Non Veg.png"} className="float-start mt-1" alt="" />}
-                                        {key === 0 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Bestseller</p>}
-                                        {key === 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Chefs Favorite</p>}
-                                        {key > 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3" style={{ fontSize: '14px' }}>{item.item_name}</p>}
+                                        {/* {key === 0 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Bestseller</p>}
+                                        {key === 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Chefs Favorite</p>} */}
+                                        {<p className="mb-1  ml-2 item-group-fonts-1 display-inline ms-3">{item.item_name}</p>}
                                     </div>
-                                    <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px', visibility: key > 1 ? 'hidden' : 'unset' }}>{item.item_name}</h5><br />
+                                    {key === 0 && <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">Bestseller</p>}
+                                    {key === 1 && <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">Chefs Favorite</p>}
+                                    {key > 1 && <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px', visibility: 'hidden' }}>{item.item_name}</h5>}
                                     {/* <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6> TO DO: revert later once be changes for currency are done */}
                                     <h6 className="mt-3  fw-bold h-25">₹ {item.rate}</h6>
                                 </div>

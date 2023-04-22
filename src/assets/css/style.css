@@ -97,6 +97,20 @@ a {
     transform: translateX(-50%);
 }
 
+.item-group-fonts-1 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.item-group-fonts-2 {
+    font-size: 9px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+
 label.btn.btn-outline-primary.text-primary.box_rounded.w-100.p-3 {
     box-shadow: none !important;
 }

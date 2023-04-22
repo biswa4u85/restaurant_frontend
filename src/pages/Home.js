@@ -32,7 +32,7 @@ export function Home() {
     };
 
     return (
-        <div className="pb-3 container-xl px-0">
+        <div className="pb-3 container-lg px-0">
             <section className="border-bottom bg-white p-3">
                 <div className="row justify-content-between">
                     <div className="col float-start home-logo">
