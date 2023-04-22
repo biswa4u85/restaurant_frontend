@@ -181,10 +181,9 @@ export function OrderSummary() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col-4">
-                        <h4 className="fw-bolder float-end">₹{coupons?.discount_amount ? (coupons.grand_total + coupons.tax) - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
+                        <h4 className="fw-bolder float-end">₹{coupons?.discount_amount ? (coupons.net_total + coupons.tax) - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
                     </div>
                 </div>
-
                 <div className="mt-2">
                     <div onClick={() => placePayment()} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3 fw-100">Finished Dining? <b>Pay Bill</b></div>
                 </div>
