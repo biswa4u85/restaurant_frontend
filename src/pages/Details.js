@@ -130,11 +130,6 @@ export function Details() {
                                         {(cart['items'] && cart['items'][item.item_name]) ?
                                             <div
                                                 className="showme_1 input-group inline-group w-75 element-center"
-                                                style={{
-                                                    position: 'relative',
-                                                    left: ' 50% !important',
-                                                    transform: 'translateX(-50%)',
-                                                }}
                                             >
                                                 <div className="input-group-prepend">
                                                     <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
@@ -149,11 +144,6 @@ export function Details() {
                                                 </div>
                                             </div> : <div
                                                 className="w-100 d-flex justify-content-center element-center"
-                                                style={{
-                                                    position: 'relative',
-                                                    left: ' 50% !important',
-                                                    transform: 'translateX(-50%)',
-                                                }}
                                             ><button className="btn add-btn details-add-btn" style={{ width: '60%' }} data-id="1" onClick={() => updateCart(item, 'add')}>Add</button></div>}
                                     </div>
                                 </div>

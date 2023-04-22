@@ -91,6 +91,12 @@ a {
     color: #fff;
 }
 
+.element-center {
+    position: relative;
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
 label.btn.btn-outline-primary.text-primary.box_rounded.w-100.p-3 {
     box-shadow: none !important;
 }
