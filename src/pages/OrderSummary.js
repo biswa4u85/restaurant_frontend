@@ -29,12 +29,14 @@ export function OrderSummary() {
     const getCoupon = async (value) => {
         clearTimeout(timer.current)
         timer.current = setTimeout(async () => {
-            if (value) {
+            if (value && value.length > 0) {
                 let coupons = await apiPostCall(`de_restaurant_backend.api.v_0_1.cart.apply_coupon`, { token: `Basic ${users.auth_key}`, order_id: orders[0]?.order_id, coupon_code: value })
                 if (coupons.status_code == 200) {
                     toast.success(coupons.message)
                     setCoupon(coupons)
                 }
+            } else {
+                setCoupon({});
             }
         }, 500)
 
@@ -97,12 +99,12 @@ export function OrderSummary() {
                                     <h6 className="fw-bolder d-inline food-name">{it.qty} x {it.item_name}</h6>
                                 </div>
                                 <div className="col">
-                                    <h6 className="fw-bolder float-end">₹{it.rate * Number(it.qty)}</h6>
+                                    <h6 className="fw-bolder float-end">₹{(it.rate * Number(it.qty).toFixed(2))}</h6>
                                 </div>
                             </div>
                             <div className="row mt-2">
                                 <div className="col">
-                                    <h6 className="fw-bolder ms-3">₹{it.rate}</h6>
+                                    <h6 className="fw-bolder ms-3">₹{Number(it.rate).toFixed(2)}</h6>
                                 </div>
                             </div>
                         </div>)}
@@ -122,7 +124,7 @@ export function OrderSummary() {
                     <div className="row">
                         {tipsList.map((item, key) => <div key={key} className="col-3 position-relative">
                             <button className="btn border pe-4 fw-bold tip-btn" id="1" onClick={() => setTips(item)}>
-                                ₹{item}
+                                ₹{Number(item).toFixed(2)}
                                 <img src="https://restaurant.scrollmonkey.com/files/orange-x.png" className="d-none rounded-pill position-absolute close1 close-btn" alt="" />
                             </button>
                         </div>)}
@@ -138,7 +140,7 @@ export function OrderSummary() {
             <section className="rounds border-bottom">
                 <div className="round-no m-3 mt-4">
                     <h6 className="round-no ">Promo-code</h6>
-                    <input type="search" className="form-control fw-bold" name="Promo-code" onChange={(val) => getCoupon(val.target.value)} />
+                    <input type="search" className="form-control fw-bold" name="Promo-code" onChange={(val) => { console.log('>>', val.target.value); getCoupon(val.target.value); }} />
                 </div>
             </section>
             <div className="place-order  p-3 m-3 mb-5 shadow-sm ">
@@ -155,7 +157,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder">TAXES</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{coupons?.tax ? coupons.tax : orders[0]?.payment[0]?.total_tax}</h6>
+                        <h6 className="fw-bolder float-end">₹{coupons?.tax ? Number(coupons.tax).toFixed(2) : Number(orders[0]?.payment[0]?.total_tax).toFixed(2)}</h6>
                     </div>
                 </div>
                 <div className="row mt-2">
@@ -171,7 +173,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder text-orange">COUPON</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end text-orange">-₹{coupons?.discount_amount ? coupons.discount_amount : 0}</h6>
+                        <h6 className="fw-bolder float-end text-orange">-₹{coupons?.discount_amount ? Number(coupons.discount_amount).toFixed(2) : 0.00}</h6>
                     </div>
                 </div>
                 <div className="row pb-3 mt-3">
@@ -179,7 +181,7 @@ export function OrderSummary() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col">
-                        <h4 className="fw-bolder float-end">₹{coupons?.grand_total ? coupons.grand_total : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
+                        <h4 className="fw-bolder float-end">₹{coupons?.discount_amount ? coupons.grand_total - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
                     </div>
                 </div>
 

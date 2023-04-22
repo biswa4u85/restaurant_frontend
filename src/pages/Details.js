@@ -147,6 +147,7 @@ export function Details() {
                                             </div> : <div
                                                 className="w-100 d-flex justify-content-center element-center"
                                             ><button className="btn add-btn details-add-btn" style={{ width: '60%' }} data-id="1" onClick={() => updateCart(item, 'add')}>Add</button></div>}
+                                        <br />
                                     </div>
                                 </div>
                             </div>)}

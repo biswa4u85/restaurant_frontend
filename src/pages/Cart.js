@@ -111,7 +111,7 @@ export function Cart() {
                     </div>
                     <div className="row align-items-center unbilled">
                         <div className="col me-0 pe-0 ">
-                            <h4 className="fw-bolder">₹{cart?.price}</h4>
+                            <h4 className="fw-bolder">₹{Number(cart?.price).toFixed(2)}</h4>
                         </div>
                         <div className="col mt-3 ms-0 ps-0 ">
                             <p className=" float-start">GRAND TOTAL <br />{cart?.total} {cart.total < 2 ? 'item' : 'items'}  served </p>
@@ -151,10 +151,10 @@ export function Cart() {
                         </div>
                         <div className="row mt-2">
                             <div className="col-8">
-                                <h6 className="fw-bolder ms-3">₹{cart.items[menu].rate}.00</h6>
+                                <h6 className="fw-bolder ms-3">₹{Number(cart.items[menu].rate).toFixed(2)}</h6>
                             </div>
                             <div className="col-4">
-                                <h6 className="fw-bolder float-end">₹{Number(cart.items[menu].rate) * Number(cart.items[menu].count)}.00</h6>
+                                <h6 className="fw-bolder float-end">₹{(Number(cart.items[menu].rate) * Number(cart.items[menu].count)).toFixed(2)}</h6>
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@ export function Cart() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col-4">
-                        <h4 className="fw-bolder float-end">₹{cart?.price}.00</h4>
+                        <h4 className="fw-bolder float-end">₹{Number(cart?.price).toFixed(2)}</h4>
                     </div>
                 </div>
                 <div className="mt-2">
