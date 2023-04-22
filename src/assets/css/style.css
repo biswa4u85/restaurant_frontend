@@ -835,12 +835,6 @@ a.slick-slide {
     width: calc(50% - 10px);
 }
 
-.element-center {
-    position: relative;
-    left: 50% !important;
-    transform: translateX(-50%);
-}
-
 @media (min-width: 600px) and (max-width: 800px) {
     .food-card {
         width: calc(33.33% - 10px);

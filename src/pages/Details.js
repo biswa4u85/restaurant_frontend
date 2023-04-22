@@ -128,7 +128,14 @@ export function Details() {
                                     <div class="ratio ratio-1x1 w-100">
                                         <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" style={{ height: '100px' }} />
                                         {(cart['items'] && cart['items'][item.item_name]) ?
-                                            <div className="showme_1 input-group inline-group w-75 element-center" >
+                                            <div
+                                                className="showme_1 input-group inline-group w-75 element-center"
+                                                style={{
+                                                    position: 'relative',
+                                                    left: ' 50% !important',
+                                                    transform: 'translateX(-50%)',
+                                                }}
+                                            >
                                                 <div className="input-group-prepend">
                                                     <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
                                                         -
@@ -140,7 +147,14 @@ export function Details() {
                                                         +
                                                     </button>
                                                 </div>
-                                            </div> : <div className="w-100 d-flex justify-content-center element-center"><button className="btn add-btn details-add-btn" style={{ width: '60%' }} data-id="1" onClick={() => updateCart(item, 'add')}>Add</button></div>}
+                                            </div> : <div
+                                                className="w-100 d-flex justify-content-center element-center"
+                                                style={{
+                                                    position: 'relative',
+                                                    left: ' 50% !important',
+                                                    transform: 'translateX(-50%)',
+                                                }}
+                                            ><button className="btn add-btn details-add-btn" style={{ width: '60%' }} data-id="1" onClick={() => updateCart(item, 'add')}>Add</button></div>}
                                     </div>
                                 </div>
                             </div>)}
