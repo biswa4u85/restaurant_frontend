@@ -125,7 +125,7 @@ export function Details() {
                                     <h6 className="mt-3  fw-bold h-25">₹ {item.rate}</h6>
                                 </div>
                                 <div className="food-cart h-100 w-25">
-                                    <div class="ratio ratio-1x1 w-100">
+                                    <div class="w-100">
                                         <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" style={{ height: '100px' }} />
                                         {(cart['items'] && cart['items'][item.item_name]) ?
                                             <div
