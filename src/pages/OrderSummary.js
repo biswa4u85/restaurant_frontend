@@ -94,11 +94,11 @@ export function OrderSummary() {
                         <h6 className="round-no">Round #{menu}</h6>
                         {grouped[menu].map((it, y) => <div key={y}>
                             <div className="row mt-3">
-                                <div className="col">
+                                <div className="col-8">
                                     <img src="https://restaurant.scrollmonkey.com/files/veg.png" alt="" />
                                     <h6 className="fw-bolder d-inline food-name">{it.qty} x {it.item_name}</h6>
                                 </div>
-                                <div className="col">
+                                <div className="col-4">
                                     <h6 className="fw-bolder float-end">₹{(it.rate * Number(it.qty).toFixed(2))}</h6>
                                 </div>
                             </div>
@@ -145,42 +145,42 @@ export function OrderSummary() {
             </section>
             <div className="place-order  p-3 m-3 mb-5 shadow-sm ">
                 <div className="row mt-4">
-                    <div className="col">
+                    <div className="col-8">
                         <h6 className="fw-bolder">SUB TOTAL</h6>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <h6 className="fw-bolder float-end">₹{((orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) - (orders[0]?.payment[0]?.total_tax ? orders[0]?.payment[0]?.total_tax : 0)).toFixed(2)}</h6>
                     </div>
                 </div>
                 <div className="row mt-2">
-                    <div className="col">
+                    <div className="col-8">
                         <h6 className="fw-bolder">TAXES</h6>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <h6 className="fw-bolder float-end">₹{coupons?.tax ? Number(coupons.tax).toFixed(2) : Number(orders[0]?.payment[0]?.total_tax).toFixed(2)}</h6>
                     </div>
                 </div>
                 <div className="row mt-2">
-                    <div className="col">
+                    <div className="col-8">
                         <h6 className="fw-bolder">TIP</h6>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <h6 className="fw-bolder float-end">₹{tips}</h6>
                     </div>
                 </div>
                 <div className="row border-bottom pb-3 mt-2">
-                    <div className="col">
+                    <div className="col-8">
                         <h6 className="fw-bolder text-orange">COUPON</h6>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <h6 className="fw-bolder float-end text-orange">-₹{coupons?.discount_amount ? Number(coupons.discount_amount).toFixed(2) : 0.00}</h6>
                     </div>
                 </div>
                 <div className="row pb-3 mt-3">
-                    <div className="col">
+                    <div className="col-8">
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <h4 className="fw-bolder float-end">₹{coupons?.discount_amount ? coupons.grand_total - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
                     </div>
                 </div>
