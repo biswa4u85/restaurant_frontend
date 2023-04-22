@@ -13,7 +13,7 @@ export function Login() {
     const { table, restaurant, setUsers, users, setRestaurant } = useContext(AuthModeContext);
 
     useEffect(() => {
-        getData();
+        // getData();
     }, [])
 
     const getData = async () => {
