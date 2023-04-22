@@ -181,7 +181,7 @@ export function OrderSummary() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col-4">
-                        <h4 className="fw-bolder float-end">₹{coupons?.discount_amount ? coupons.grand_total - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
+                        <h4 className="fw-bolder float-end">₹{coupons?.discount_amount ? (coupons.grand_total + coupons.tax) - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
                     </div>
                 </div>
 
