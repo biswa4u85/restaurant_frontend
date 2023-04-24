@@ -85,6 +85,12 @@ export function Cart() {
         }
     }
 
+    useEffect(() => {
+        return () => {
+            setPlaceOrderClicked(false);
+        }
+    }, [])
+
 
     return (
         <>
