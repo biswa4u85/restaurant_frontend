@@ -101,12 +101,12 @@ export function Cart() {
             <div>
                 <div className="order-details  shadow-sm box_rounded  p-3 m-3 pb-0">
                     <div className="row order-summary border-bottom">
-                        <div className="col-6">
-                            <h6 className="fw-bold">TABLE NO. #{table}</h6>
-                        </div>
-                        <div className="col-6 text-right">
+                        <div className="col-7 text-right" style={{ visibility: 'hidden' }}>
                             <p className="p-0 m-0">GUEST</p>
                             <p className="fw-bolder text-dark">{users?.full_name}</p>
+                        </div>
+                        <div className="col-5">
+                            <h6 className="fw-bold">TABLE NO. #{table}</h6>
                         </div>
                     </div>
                     <div className="row align-items-center unbilled">
@@ -118,14 +118,14 @@ export function Cart() {
                         </div>
                         <div className="col ">
                             <NavLink to="/home">
-                                <h6 className="float-end fw-bolder mt-3 "> {'Pending'}
+                                <h6 className="float-right fw-bolder mt-3 "> {'Pending'}
                                     <img src="https://restaurant.scrollmonkey.com/files/Vector (3).png" alt="" />
                                 </h6>
                             </NavLink>
                         </div>
                     </div>
                 </div>
-                {cart?.items && (Object.keys(cart.items)).map((menu, k) => <section key={k} className=" border-bottom">
+                {cart?.items && (Object.keys(cart.items)).map((menu, k) => <section key={k} className="p-3 border-bottom">
                     <div className="rounds m-3 mt-4">
                         <h6 className="round-no">Item #{Number(k) + 1}</h6>
                         <div className="row mt-3">
@@ -134,7 +134,7 @@ export function Cart() {
                                 <h6 className="fw-bolder d-inline food-name"> {menu}</h6>
                             </div>
                             <div className="col-4">
-                                <div className=" input-group inline-group shadow-sm float-end ">
+                                <div className=" input-group inline-group shadow-sm float-right ">
                                     <div className="input-group-prepend">
                                         <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(cart.items[menu], 'minus')}>
                                             <img src="https://restaurant.scrollmonkey.com/files/minus-dark.png" className="text-white" alt="" />
@@ -154,7 +154,7 @@ export function Cart() {
                                 <h6 className="fw-bolder ms-3">₹{Number(cart.items[menu].rate).toFixed(2)}</h6>
                             </div>
                             <div className="col-4">
-                                <h6 className="fw-bolder float-end">₹{(Number(cart.items[menu].rate) * Number(cart.items[menu].count)).toFixed(2)}</h6>
+                                <h6 className="fw-bolder float-right">₹{(Number(cart.items[menu].rate) * Number(cart.items[menu].count)).toFixed(2)}</h6>
                             </div>
                         </div>
                     </div>
@@ -164,10 +164,10 @@ export function Cart() {
 
 
             <section className="border-bottom add-more p-3">
-                <NavLink to="/home">
+                <NavLink to="/home" className={'p-3'}>
                     <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
-                    <p className="d-inline ms-2 text-dark">Add more item(s)</p>
-                    <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-end me-2" />
+                    <p className="d-inline ms-2 text-dark ml-2">Add more item(s)</p>
+                    <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-right me-2" />
                 </NavLink>
             </section>
             <section className="border-bottom cooking-requests p-3">
@@ -175,9 +175,9 @@ export function Cart() {
                     <textarea placeholder="add note" onChange={(obj) => addingNotes(obj.target.value)} style={{ width: "100%" }} />
                 </>
                     :
-                    <span onClick={() => setIsnote(true)}>
+                    <span onClick={() => setIsnote(true)} className="p-3">
                         <img src="https://restaurant.scrollmonkey.com/files/Vector (12).png" alt="" />
-                        <p className="d-inline ms-2 text-dark">Add cooking requests</p>
+                        <p className="d-inline ms-2 text-dark ml-2">Add cooking requests</p>
                     </span>}
             </section>
             <div className="place-order  p-3 m-3 mb-5 shadow-sm ">
@@ -186,7 +186,7 @@ export function Cart() {
                         <h6 className="fw-bolder">SUB TOTAL</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{cart?.price}</h6>
+                        <h6 className="fw-bolder float-right">₹{cart?.price}</h6>
                     </div>
                 </div> */}
                 {/* <div className="row border-bottom pb-3 mt-2">
@@ -194,7 +194,7 @@ export function Cart() {
                         <h6 className="fw-bolder">TAXES</h6>
                     </div>
                     <div className="col">
-                        <h6 className="fw-bolder float-end">₹{"0"}</h6>
+                        <h6 className="fw-bolder float-right">₹{"0"}</h6>
                     </div>
                 </div> */}
                 <div className="row pb-3 mt-3">
@@ -202,7 +202,7 @@ export function Cart() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col-4">
-                        <h4 className="fw-bolder float-end">₹{Number(cart?.price).toFixed(2)}</h4>
+                        <h4 className="fw-bolder float-right">₹{Number(cart?.price).toFixed(2)}</h4>
                     </div>
                 </div>
                 <div className="mt-2">
@@ -213,14 +213,14 @@ export function Cart() {
                         <p className="fw-bolder">TOTAL COUNT</p>
                     </div>
                     <div className="col-4">
-                        <p className="fw-bolder float-end">{cart?.total}</p>
+                        <p className="fw-bolder float-right">{cart?.total}</p>
                     </div>
                 </div>
             </div>
 
             <footer id="orderSummary" className="d-none text-dark success-box text-center body_rounded fixed-bottom p-3">
                 <h6 className="fw-bold d-inline">Success</h6>
-                <img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-end me-2 success-close-btn" alt="" />
+                <img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-right me-2 success-close-btn" alt="" />
 
                 <div className="succes-img">
                     <img src="" alt="" />
