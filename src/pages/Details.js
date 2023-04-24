@@ -170,7 +170,7 @@ export function Details() {
                         <h4 className=" mt-0  float-left d-inline">₹{cart.price}</h4>
                         <span className="ms-2 " style={{ display: 'inline-block', padding: '5px 0 0 5px' }}>plus taxes</span>
                     </div>
-                    <div className="col float-end ">
+                    <div className="col float-end">
                         <NavLink to="/cart" className="text-white text-center ">
                             <h6 className="mt-4">View Cart</h6>
                         </NavLink>

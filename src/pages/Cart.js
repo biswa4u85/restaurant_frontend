@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { AuthModeContext } from "../contexts";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -8,7 +8,8 @@ export function Cart() {
     let navigate = useNavigate();
     const { users, table, cart, setCart } = useContext(AuthModeContext);
     const [isnote, setIsnote] = useState(false)
-    const [note, setNote] = useState('')
+    const [note, setNote] = useState('');
+    const [placeOrderClicked, setPlaceOrderClicked] = useState(false);
     let time = useRef();
 
     const updateCart = async (item, type) => {
@@ -83,6 +84,7 @@ export function Cart() {
             }
         }
     }
+
 
     return (
         <>
@@ -206,7 +208,7 @@ export function Cart() {
                     </div>
                 </div>
                 <div className="mt-2">
-                    <button onClick={() => placeOrder()} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3">Place Order</button>
+                    <button onClick={() => setPlaceOrderClicked(true)} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3">Place Order</button>
                 </div>
                 <div className="row mt-4">
                     <div className="col-8">
@@ -218,9 +220,9 @@ export function Cart() {
                 </div>
             </div>
 
-            <footer id="orderSummary" className="d-none text-dark success-box text-center body_rounded fixed-bottom p-3">
+            {placeOrderClicked && <footer id="orderSummary" className="text-dark success-box text-center body_rounded fixed-bottom p-3">
                 <h6 className="fw-bold d-inline">Success</h6>
-                <img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-right me-2 success-close-btn" alt="" />
+                <img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-right mr-4 success-close-btn" alt="" />
 
                 <div className="succes-img">
                     <img src="" alt="" />
@@ -228,9 +230,9 @@ export function Cart() {
                 <div className="text-center p-4">
                     <h3 className="fw-bolder">Your order is confirmed!</h3>
                     <p>Please wait upto 20mins for your order to be served fresh. Thank you for your patience.</p>
-                    <NavLink to="/order-summary" className="btn save-btn btn-block box_rounded w-100 py-3 mt-3">View Order Summary</NavLink>
+                    <NavLink to="/order-summary" className="btn save-btn btn-block box_rounded w-100 py-3 mt-3" onClick={() => placeOrder()}>View Order Summary</NavLink>
                 </div>
-            </footer>
+            </footer>}
         </>
     );
 }
