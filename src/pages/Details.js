@@ -120,9 +120,9 @@ export function Details() {
                                         {key === 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Chefs Favorite</p>} */}
                                         {<p className="mb-1  ml-2 item-group-fonts-1 display-inline ms-3">{item.item_name}</p>}
                                     </div>
-                                    {key === 0 && <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">Bestseller</p>}
-                                    {key === 1 && <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">Chefs Favorite</p>}
-                                    {key > 1 && <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px', visibility: 'hidden' }}>{item.item_name}</h5>}
+                                    {item.tags?.map(tag => <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">{tag}</p>)}
+                                    {/* {key === 1 && <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">Chefs Favorite</p>}
+                                    {key > 1 && <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px', visibility: 'hidden' }}>{item.item_name}</h5>} */}
                                     {/* <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6> TO DO: revert later once be changes for currency are done */}
                                     <h6 className="mt-3  fw-bold h-25">₹ {item.rate}</h6>
                                 </div>
