@@ -59,7 +59,7 @@ export function Login() {
                     <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" novalidate>
                         <input className="form-control  p-3 box_rounded mb-3 " type="text" placeholder="Your Email or Phone no." {...register("username", { required: true })} required />
                         <input className="form-control  p-3 box_rounded mb-3 " type="password" placeholder="Your Password" {...register("password", { required: true })} required />
-                        <div style={{ float: 'right' }}><NavLink to="/signUp">Sign up</NavLink></div>
+                        <div style={{ float: 'right' }} ><NavLink to="/signUp">Sign up</NavLink></div>
                         {/* <div style={{ float: 'left' }}><NavLink to="/forgot-password">Forgot Password</NavLink></div> */}
                         <div className="p-4 fixed-bottom">
                             <button type="submit" className="btn save-btn btn-block box_rounded w-100 py-3">Continue</button>

@@ -174,7 +174,7 @@ export function Cart() {
             <section className="border-bottom add-more p-3">
                 <NavLink to="/home" className={'p-3'}>
                     <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
-                    <p className="d-inline ms-2 text-dark ml-2">Add more item(s)</p>
+                    <p className="d-inline ms-2 text-dark ml-2">Order more item(s)</p>
                     <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-right me-2" />
                 </NavLink>
             </section>
@@ -228,7 +228,7 @@ export function Cart() {
 
             {placeOrderClicked && <footer id="orderSummary" className="text-dark success-box text-center body_rounded fixed-bottom p-3">
                 <h6 className="fw-bold d-inline">Success</h6>
-                <img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-right mr-4 success-close-btn" alt="" />
+                <span onClick={() => setPlaceOrderClicked(false)}><img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-right mr-4 success-close-btn" alt="" /></span>
 
                 <div className="succes-img">
                     <img src="" alt="" />
@@ -236,7 +236,7 @@ export function Cart() {
                 <div className="text-center p-4">
                     <h3 className="fw-bolder">Your order is confirmed!</h3>
                     <p>Please wait upto 20mins for your order to be served fresh. Thank you for your patience.</p>
-                    <NavLink to="/order-summary" className="btn save-btn btn-block box_rounded w-100 py-3 mt-3" onClick={() => placeOrder()}>View Order Summary</NavLink>
+                    <button onClick={() => placeOrder()} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3">View Order Summary</button>
                 </div>
             </footer>}
         </>

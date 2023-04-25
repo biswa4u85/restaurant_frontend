@@ -114,15 +114,15 @@ export function OrderSummary() {
             <section className="border-bottom add-more p-3">
                 <NavLink to="/home" className={'p-3'}>
                     <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
-                    <p className="d-inline ms-2 text-dark flex-grow-1 ml-2">Add more item(s)</p>
+                    <p className="d-inline ms-2 text-dark flex-grow-1 ml-2">Order more item(s)</p>
                     <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-right me-2" />
                 </NavLink>
             </section>
-            <section className="p-3 border-bottom">
+            <section className="px-3 border-bottom">
                 <div className="add-tip m-3 mt-4">
                     <h6 className="tip ">Add Tip (Optional)</h6>
                     <div className="row">
-                        {tipsList.map((item, key) => <div key={key} className="col-4 position-relative">
+                        {tipsList.map((item, key) => <div key={key} className="col-4 mt-1 position-relative">
                             <button className="btn border pe-4 fw-bold tip-btn d-flex align-items-center" id="1" onClick={(e) => { e.stopPropagation(); setTips(item) }}>
                                 <span>₹{Number(item).toFixed(2)}</span>
                                 {tips === item && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0) }}>x</button>}
@@ -137,7 +137,7 @@ export function OrderSummary() {
                     </div>
                 </div>
             </section>
-            <section className="p-3 rounds border-bottom">
+            <section className="px-3 rounds border-bottom">
                 <div className="round-no m-3 mt-4">
                     <h6 className="round-no ">Promo-code</h6>
                     <input type="search" className="form-control fw-bold" name="Promo-code" onChange={(val) => { console.log('>>', val.target.value); getCoupon(val.target.value); }} />
