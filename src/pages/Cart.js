@@ -3,6 +3,9 @@ import { AuthModeContext } from "../contexts";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { apiPostCall } from "../services/frappe-apis";
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import OKIcon from '../assets/images/icons8-ok.gif';
 
 export function Cart() {
     let navigate = useNavigate();
@@ -89,7 +92,16 @@ export function Cart() {
         return () => {
             setPlaceOrderClicked(false);
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (placeOrderClicked) {
+            setTimeout(() => {
+                placeOrder();
+                setPlaceOrderClicked(false);
+            }, 5000);
+        }
+    }, [placeOrderClicked])
 
 
     return (
@@ -226,7 +238,24 @@ export function Cart() {
                 </div>
             </div>
 
-            {placeOrderClicked && <footer id="orderSummary" className="text-dark success-box text-center body_rounded fixed-bottom p-3">
+            <Modal
+                classNames={{
+                    overlay: 'customOverlay',
+                    modal: 'customModal',
+                }}
+                open={placeOrderClicked}
+                showCloseIcon={false}
+                center
+            >
+                <div className="text-center p-4">
+                    <h5 className="fw-bold d-inline">Success</h5>
+                    <div><img src={OKIcon} alt="My animated GIF" /></div>
+                    <h3 className="fw-bolder">Your order is confirmed!</h3>
+                    <p>Please wait upto 20mins for your order to be served fresh. Thank you for your patience.</p>
+                </div>
+            </Modal>
+
+            {/* {placeOrderClicked && <footer id="orderSummary" className="text-dark success-box text-center body_rounded fixed-bottom p-3">
                 <h6 className="fw-bold d-inline">Success</h6>
                 <span onClick={() => setPlaceOrderClicked(false)}><img src="https://restaurant.scrollmonkey.com/files/Vector (5).png" className="float-right mr-4 success-close-btn" alt="" /></span>
 
@@ -238,7 +267,7 @@ export function Cart() {
                     <p>Please wait upto 20mins for your order to be served fresh. Thank you for your patience.</p>
                     <button onClick={() => placeOrder()} className="btn save-btn place-order-btn btn-block box_rounded w-100 py-3">View Order Summary</button>
                 </div>
-            </footer>}
+            </footer>} */}
         </>
     );
 }

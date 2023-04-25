@@ -80,7 +80,7 @@ export function Details() {
 
     return (
         <div className="bg-white">
-            {/* <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
+            <div className="pt-3 gurdeep-osahan-inner-header border-bottom w-100">
                 <div style={{
                     float: 'right', display: 'flex', marginTop: '7px', position: 'relative', left: '-20px'
                 }}>
@@ -108,8 +108,8 @@ export function Details() {
                 <div className="left mr-auto">
                     <NavLink to="/home" className="item-group-fonts-1"><i className="btn_detail fa fa-chevron-left"></i>{type}</NavLink>
                 </div>
-            </div> */}
-            <TopBar type={type} itemType={itemType} setItemType={setIemType} />
+            </div>
+            {/* <TopBar type={type} itemType={itemType} setItemType={setIemType} /> */}
             <div className="mb-5">
                 <section className=" position-relative py-3 pl-3">
                     <div className=" tab-content pr-3" id="pills-tabContent">
@@ -166,10 +166,10 @@ export function Details() {
                     </div>
                 </section>
             </div>
-            <Footer
+            {/* <Footer
                 cart={cart}
-            />
-            {/* {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
+            /> */}
+            {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
                 <div className="row mb-3 ms-2 d-flex align-items-center">
                     <div className="col float-start ">
                         <p className=" mt-3  mb-1">{cart.total} {cart.total < 2 ? 'ITEM' : 'ITEMS'}</p>
@@ -182,7 +182,7 @@ export function Details() {
                         </NavLink>
                     </div>
                 </div>
-            </footer>)} */}
+            </footer>)}
         </div>
     );
 }

@@ -1058,6 +1058,17 @@ a.slick-slide {
     height: auto;
 }
 
+.customOverlay {
+    background: rgba(36, 123, 160, 0.7);
+}
+
+.customModal {
+    background: #b2dbbf;
+    max-width: 500px;
+    width: 80%;
+    margin-left: -10px !important;
+}
+
 @media only screen and (max-width: 320px) and (min-width:280px) {
     .food-cart .input-group {
         left: 0;
