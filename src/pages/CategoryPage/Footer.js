@@ -28,6 +28,7 @@ const CartPrice = styled.h4`
   margin: 0;
   font-weight: 700;
   display: inline-block;
+  color: white !important;
 `;
 
 const CartDetails = styled.div`
@@ -36,7 +37,7 @@ const CartDetails = styled.div`
 `;
 
 const CartLink = styled(NavLink)`
-  color: var(--white);
+  color: white !important;
   text-decoration: none;
   text-align: center;
   margin-top: 10px;
