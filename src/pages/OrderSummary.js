@@ -11,7 +11,8 @@ export function OrderSummary() {
     let navigate = useNavigate();
     const { users, setUsers } = useContext(AuthModeContext);
     const [orders, setOrders] = useState([])
-    const [tips, setTips] = useState(0)
+    const [tips, setTips] = useState(0);
+    const [otherTips, setOtherTips] = useState(null);
     const [coupons, setCoupon] = useState({})
     let timer = useRef(null)
 
@@ -123,15 +124,15 @@ export function OrderSummary() {
                     <h6 className="tip ">Add Tip (Optional)</h6>
                     <div className="row">
                         {tipsList.map((item, key) => <div key={key} className="col-4 mt-1 position-relative">
-                            <button className="btn border pe-4 fw-bold tip-btn d-flex align-items-center" id="1" onClick={(e) => { e.stopPropagation(); setTips(item) }}>
+                            <button className="btn border pe-4 fw-bold tip-btn d-flex align-items-center mr-1" id="1" onClick={(e) => { e.stopPropagation(); setTips(item) }}>
                                 <span>₹{Number(item).toFixed(2)}</span>
                                 {tips === item && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0) }}>x</button>}
                             </button>
                         </div>)}
                         <div className="col-3 position-relative ">
-                            <button className="btn border pe-4 fw-bold tip-btn" id="4">
-                                <input style={{ border: 'none', width: 45 }} type="number" placeholder="Other" onChange={(val) => setTips(val.target.value)} />
-                                <img src="https://restaurant.scrollmonkey.com/files/orange-x.png" className="d-none rounded-pill position-absolute close4 close-btn" alt="" />
+                            <button className="btn border pe-4 fw-bold tip-btn mt-2 d-flex" id="4">
+                                <input style={{ border: 'none', width: 45 }} placeholder="Other" value={otherTips} onChange={(val) => { setTips(val.target.value); setOtherTips(val.target.value); }} />
+                                {tips && !tipsList.includes(tips) && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0); setOtherTips('Other') }}>x</button>}
                             </button>
                         </div>
                     </div>

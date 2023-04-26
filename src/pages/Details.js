@@ -20,7 +20,7 @@ export function Details() {
 
     useEffect(() => {
         getData();
-        getItemTypes();
+        // getItemTypes();
     }, [itemType]);
 
     const getData = async () => {
@@ -117,16 +117,10 @@ export function Details() {
                             {items.length > 0 && items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative' }}>
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-100 flex-row align-items-start h-25">
-                                        {/* TO DO: w-75 */}
                                         {item.item_type === itemTypes.veg ? <img src={(itemCategory && itemCategory[itemTypes.veg]) || "https://restaurant.scrollmonkey.com/files/veg.png"} className="float-start mt-1" alt="" /> : <img style={{ verticalAlign: 'baseline', width: 13, height: 14 }} src={(itemCategory && itemCategory[itemTypes.nonveg]) || "https://restaurant.scrollmonkey.com/files/Non Veg.png"} className="float-start mt-1" alt="" />}
-                                        {/* {key === 0 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Bestseller</p>}
-                                        {key === 1 && <p className="mb-1  ml-1 fw-bold text-dark display-inline ms-3 mt-1" style={{ fontSize: '9px' }}>Chefs Favorite</p>} */}
-                                        {<p className="mb-1  ml-2 item-group-fonts-1 display-inline ms-3">{item.item_name}</p>}
+                                        {<p className="mb-1  ml-2 item-group-fonts-1 display-inline">{item.item_name}</p>}
                                     </div>
-                                    {item.tags?.map(tag => <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">{tag}</p>)}
-                                    {/* {key === 1 && <p className="mb-1  item-group-fonts-2 display-inline ms-3 mt-1">Chefs Favorite</p>}
-                                    {key > 1 && <h5 className="my-2  fw-bold h-50" style={{ fontSize: '16px', lineHeight: '20px', visibility: 'hidden' }}>{item.item_name}</h5>} */}
-                                    {/* <h6 className="mt-3  fw-bold h-25">{item.currency} {item.rate}</h6> TO DO: revert later once be changes for currency are done */}
+                                    {item.tags?.map(tag => <p className="mb-1 item-group-fonts-2 display-inline mt-1">{tag}</p>)}
                                     <h6 className="mt-3  fw-bold h-25">₹ {item.rate}</h6>
                                 </div>
                                 <div className="food-cart h-100 w-25">
@@ -169,15 +163,16 @@ export function Details() {
             {/* <Footer
                 cart={cart}
             /> */}
-            {cart?.total > 0 && (<footer className="text-white view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
+            {cart?.total > 0 && (<footer className="view-cart body_rounded fixed-bottom" style={{ padding: '0 10px' }}>
                 <div className="row mb-3 ms-2 d-flex align-items-center">
                     <div className="col float-start ">
-                        <p className=" mt-3  mb-1">{cart.total} {cart.total < 2 ? 'ITEM' : 'ITEMS'}</p>
-                        <h4 className=" mt-0  float-left d-inline">₹{cart.price}</h4>
-                        <span className="ms-2 " style={{ display: 'inline-block', padding: '5px 0 0 5px' }}>plus taxes</span>
+                        <p className="mt-3 mb-1">{cart.total} {cart.total < 2 ? 'ITEM' : 'ITEMS'}</p>
+                        <h4 className="mt-0  float-left d-inline">₹{cart.price}</h4>
+                        <span className="ms-2" style={{ display: 'inline-block', padding: '5px 0 0 5px' }}>plus taxes</span>
                     </div>
                     <div className="col float-end">
-                        <NavLink to="/cart" className="text-white text-center ">
+                        <NavLink to="/cart" className="view-cart text-center">
+                            <p className="mt-3 mb-1" style={{ visibility: 'hidden' }}></p>
                             <h6 className="mt-4">View Cart</h6>
                         </NavLink>
                     </div>

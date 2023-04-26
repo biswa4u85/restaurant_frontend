@@ -133,7 +133,7 @@ export function Cart() {
                         <div className="col me-0 pe-0 ">
                             <h4 className="fw-bolder">₹{Number(cart?.price).toFixed(2)}</h4>
                         </div>
-                        <div className="col mt-3 ms-0 ps-0 ">
+                        <div className="col mt-3 ml-0 ps-0 ">
                             <p className=" float-start">GRAND TOTAL <br />{cart?.total} {cart.total < 2 ? 'item' : 'items'}  served </p>
                         </div>
                         <div className="col ">
@@ -171,7 +171,7 @@ export function Cart() {
                         </div>
                         <div className="row mt-2">
                             <div className="col-8">
-                                <h6 className="fw-bolder ms-3">₹{Number(cart.items[menu].rate).toFixed(2)}</h6>
+                                <h6 className="fw-bolder">₹{Number(cart.items[menu].rate).toFixed(2)}</h6>
                             </div>
                             <div className="col-4">
                                 <h6 className="fw-bolder float-right">₹{(Number(cart.items[menu].rate) * Number(cart.items[menu].count)).toFixed(2)}</h6>
@@ -186,7 +186,7 @@ export function Cart() {
             <section className="border-bottom add-more p-3">
                 <NavLink to="/home" className={'p-3'}>
                     <img src="https://restaurant.scrollmonkey.com/files/plus-dark.png" alt="" />
-                    <p className="d-inline ms-2 text-dark ml-2">Order more item(s)</p>
+                    <p className="d-inline text-dark ml-2">Add more item(s)</p>
                     <img src="https://restaurant.scrollmonkey.com/files/Vector (4).png" alt="" className="float-right me-2" />
                 </NavLink>
             </section>
@@ -197,7 +197,7 @@ export function Cart() {
                     :
                     <span onClick={() => setIsnote(true)} className="p-3">
                         <img src="https://restaurant.scrollmonkey.com/files/Vector (12).png" alt="" />
-                        <p className="d-inline ms-2 text-dark ml-2">Add cooking requests</p>
+                        <p className="d-inline text-dark ml-2">Add cooking requests</p>
                     </span>}
             </section>
             <div className="place-order  p-3 m-3 mb-5 shadow-sm ">
@@ -230,10 +230,10 @@ export function Cart() {
                 </div>
                 <div className="row mt-4">
                     <div className="col-8">
-                        <p className="fw-bolder">TOTAL COUNT</p>
+                        <h4 className="fw-bolder">GRAND TOTAL</h4>
                     </div>
                     <div className="col-4">
-                        <p className="fw-bolder float-right">{cart?.total}</p>
+                        <h4 className="fw-bolder float-right">₹{Number(cart?.price).toFixed(2)}</h4>
                     </div>
                 </div>
             </div>
