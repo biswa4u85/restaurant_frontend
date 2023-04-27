@@ -97,6 +97,7 @@ export function OrderSummary() {
                             <div className="row mt-3">
                                 <div className="col-8">
                                     <img src="https://restaurant.scrollmonkey.com/files/veg.png" alt="" />
+                                    &nbsp;&nbsp;
                                     <h6 className="fw-bolder d-inline food-name">{it.qty} x {it.item_name}</h6>
                                 </div>
                                 <div className="col-4">
@@ -131,8 +132,8 @@ export function OrderSummary() {
                         </div>)}
                         <div className="col-3 position-relative ">
                             <button className="btn border pe-4 fw-bold tip-btn mt-2 d-flex" id="4">
-                                <input style={{ border: 'none', width: 45 }} placeholder="Other" value={otherTips} onChange={(val) => { setTips(val.target.value); setOtherTips(val.target.value); }} />
-                                {tips && !tipsList.includes(tips) && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0); setOtherTips('Other') }}>x</button>}
+                                <input style={{ border: 'none', width: 45 }} placeholder="Other" type={'number'} value={otherTips} onChange={(val) => { setTips(val.target.value); setOtherTips(val.target.value); }} />
+                                {tips && !tipsList.includes(tips) && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0); setOtherTips('') }}>x</button>}
                             </button>
                         </div>
                     </div>
