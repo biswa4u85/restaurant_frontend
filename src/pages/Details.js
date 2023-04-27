@@ -117,7 +117,7 @@ export function Details() {
                             {items.length > 0 && items.map((item, key) => <div key={key} className="d-flex border-bottom mx-1 mt-2 mb-4 align-items-start" style={{ position: 'relative' }}>
                                 <div className="h-100 flex-grow-1">
                                     <div className="d-flex w-100 flex-row align-items-start h-25">
-                                        {item.item_type === itemTypes.veg ? <img src={(itemCategory && itemCategory[itemTypes.veg]) || "https://restaurant.scrollmonkey.com/files/veg.png"} className="float-start mt-1" alt="" /> : <img style={{ verticalAlign: 'baseline', width: 13, height: 14 }} src={(itemCategory && itemCategory[itemTypes.nonveg]) || "https://restaurant.scrollmonkey.com/files/Non Veg.png"} className="float-start mt-1" alt="" />}
+                                        {item.item_type === itemTypes.veg || item.item_type === "" ? <img src={(itemCategory && itemCategory[itemTypes.veg]) || "https://restaurant.scrollmonkey.com/files/veg.png"} className="float-start mt-1" alt="" /> : <img style={{ verticalAlign: 'baseline', width: 13, height: 14 }} src={(itemCategory && itemCategory[itemTypes.nonveg]) || "https://restaurant.scrollmonkey.com/files/Non Veg.png"} className="float-start mt-1" alt="" />}
                                         {<p className="mb-1  ml-2 item-group-fonts-1 display-inline">{item.item_name}</p>}
                                     </div>
                                     {item.tags?.map(tag => <p className="mb-1 item-group-fonts-2 display-inline mt-1">{tag}</p>)}
@@ -131,13 +131,13 @@ export function Details() {
                                                 className="showme_1 input-group inline-group w-75 element-center"
                                             >
                                                 <div className="input-group-prepend">
-                                                    <button className="btn btn-outline-secondary btn-minus" onClick={() => updateCart(item, 'minus')}>
+                                                    <button className="btn btn-outline-secondary btn-minus p-0 pl-1" onClick={() => updateCart(item, 'minus')}>
                                                         -
                                                     </button>
                                                 </div>
-                                                <input className="form-control quantity" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
+                                                <input className="form-control quantity p-0" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
                                                 <div className="input-group-append">
-                                                    <button className="btn btn-outline-secondary btn-plus" onClick={() => updateCart(item, 'add')}>
+                                                    <button className="btn btn-outline-secondary btn-plus p-0 pr-1" onClick={() => updateCart(item, 'add')}>
                                                         +
                                                     </button>
                                                 </div>
