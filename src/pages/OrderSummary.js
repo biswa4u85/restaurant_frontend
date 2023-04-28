@@ -11,7 +11,7 @@ export function OrderSummary() {
     let navigate = useNavigate();
     const { users, setUsers } = useContext(AuthModeContext);
     const [orders, setOrders] = useState([])
-    const [tips, setTips] = useState(0);
+    const [tips, setTips] = useState();
     const [otherTips, setOtherTips] = useState(null);
     const [coupons, setCoupon] = useState({})
     let timer = useRef(null)
@@ -127,13 +127,13 @@ export function OrderSummary() {
                         {tipsList.map((item, key) => <div key={key} className="col-4 mt-1 position-relative">
                             <button className="btn border pe-4 fw-bold tip-btn d-flex align-items-center mr-1" id="1" onClick={(e) => { e.stopPropagation(); setTips(item) }}>
                                 <span>₹{Number(item).toFixed(2)}</span>
-                                {tips === item && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0) }}>x</button>}
+                                {tips === item && <button className="btn p-0 pb-1 ml-1" onClick={(e) => { e.stopPropagation(); setTips() }}>x</button>}
                             </button>
                         </div>)}
                         <div className="col-3 position-relative ">
                             <button className="btn border pe-4 fw-bold tip-btn mt-2 d-flex" id="4">
                                 <input style={{ border: 'none', width: 45 }} placeholder="Other" type={'number'} value={otherTips} onChange={(val) => { setTips(val.target.value); setOtherTips(val.target.value); }} />
-                                {tips && !tipsList.includes(tips) && <button className="btn p-0  pb-1 px-2" onClick={(e) => { e.stopPropagation(); setTips(0); setOtherTips('') }}>x</button>}
+                                {tips && !tipsList.includes(tips) && <button className="btn p-0 pb-1 ml-1" onClick={(e) => { e.stopPropagation(); setTips(''); setOtherTips('') }}>x</button>}
                             </button>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ export function OrderSummary() {
                         <h6 className="fw-bolder">TIP</h6>
                     </div>
                     <div className="col-4">
-                        <h6 className="fw-bolder float-right">₹{tips}</h6>
+                        <h6 className="fw-bolder float-right">₹{tips?tips:0}</h6>
                     </div>
                 </div>
                 <div className="row border-bottom pb-3 mt-2">
@@ -183,7 +183,7 @@ export function OrderSummary() {
                         <h4 className="fw-bolder">TOTAL</h4>
                     </div>
                     <div className="col-4">
-                        <h4 className="fw-bolder float-right">₹{coupons?.discount_amount ? (coupons.net_total + coupons.tax) - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips)}</h4>
+                        <h4 className="fw-bolder float-right">₹{coupons?.discount_amount ? (coupons.net_total + coupons.tax) - coupons.discount_amount : (orders[0]?.payment[0]?.grand_total ? orders[0]?.payment[0]?.grand_total : 0) + Number(tips ? tips :0)}</h4>
                     </div>
                 </div>
                 <div className="mt-2">
