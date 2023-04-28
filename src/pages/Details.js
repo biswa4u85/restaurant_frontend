@@ -125,19 +125,19 @@ export function Details() {
                                 </div>
                                 <div className="food-cart h-100 w-25">
                                     <div class="w-100">
-                                        <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" style={{ height: '100px' }} />
+                                        <img src={item.image ? config.imageURL + item.image : "https://restaurant.scrollmonkey.com/files/Rectangle 188 (1).png"} className="w-100 box_rounded" style={{ maxHeight: '100px' }} />
                                         {(cart['items'] && cart['items'][item.item_name]) ?
                                             <div
                                                 className="showme_1 input-group inline-group w-75 element-center"
                                             >
                                                 <div className="input-group-prepend">
-                                                    <button className="btn btn-outline-secondary btn-minus p-0 pl-1" onClick={() => updateCart(item, 'minus')}>
+                                                    <button className="btn btn-outline-secondary btn-minus p-0 pl-2" onClick={() => updateCart(item, 'minus')}>
                                                         -
                                                     </button>
                                                 </div>
                                                 <input className="form-control quantity p-0" readOnly min="0" name="quantity" value={cart['items'][item.item_name].count} type="number" />
                                                 <div className="input-group-append">
-                                                    <button className="btn btn-outline-secondary btn-plus p-0 pr-1" onClick={() => updateCart(item, 'add')}>
+                                                    <button className="btn btn-outline-secondary btn-plus p-0 pr-2" onClick={() => updateCart(item, 'add')}>
                                                         +
                                                     </button>
                                                 </div>
